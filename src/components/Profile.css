@@ -32,18 +32,30 @@
     cursor: pointer;
   }
   
-  .profile-details {
-    margin-top: 20px;
-  }
-  
-  .profile-details h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .profile-details p {
-    margin-bottom: 5px;
-  }
+  /* Profile.css */
+
+.profile-details {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.profile-details p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.profile-details p:last-child {
+  margin-bottom: 0;
+}
 
   .submit {
     font-family: inherit;
