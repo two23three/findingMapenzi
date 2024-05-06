@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Profile.css';
 
 function Profile() {
   // State that has user profile info
@@ -38,16 +39,22 @@ function Profile() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Check if the age is below 18
+    if (profileData.age < 18) {
+      alert('You must be 18 years or older to sign up.');
+      return; // Exit the function without setting submitted state
+    }
+    // Age is valid, proceed with submission
     setSubmitted(true);
     // Here you can submit the profileData to the backend
     // Example: submitProfileData(profileData);
   };
 
   return (
-    <div>
+    <div className="profile-container">
       <h2>Profile</h2>
       {!submitted ? (
-        <form onSubmit={handleSubmit}>
+        <form className="profile-form" onSubmit={handleSubmit}>
           <label>
             Name:
             <input
@@ -89,7 +96,7 @@ function Profile() {
           <button type="submit">Save Changes</button>
         </form>
       ) : (
-        <div>
+        <div className="profile-details">
           <h3>Profile Details:</h3>
           <p>Name: {profileData.username}</p>
           <p>Age: {profileData.age}</p>
