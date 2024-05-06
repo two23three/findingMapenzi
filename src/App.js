@@ -8,8 +8,8 @@ import NavBar from "./components/NavBar"
 function App() {
   return (
     <div className="App">
-      <Profile />
       <NavBar />
+      <Profile />
       <LoveSurvey />
       <FoodDisplay />
       <StarRating />
