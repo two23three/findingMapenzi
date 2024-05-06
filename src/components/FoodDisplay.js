@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
-  const API_KEY = 'YOUR_API_KEY_HERE'; // Replace 'YOUR_API_KEY_HERE' with your actual Spoonacular API key
+  const API_KEY = ''; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
   useEffect(function() {
     fetch(`https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`)
@@ -22,7 +22,7 @@ function FoodDisplay() {
 
   return (
     <div>
-      <h1>Random Recipes</h1>
+      <h1>Random Foods</h1>
       {recipes.map(function(recipe, index) {
         return (
           <div key={index}>
