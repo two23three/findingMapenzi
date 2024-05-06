@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import data from "../db.json";
-
+import "./LoveSurvey.css";
 function LoveSurvey() {
    const [page, setPage] = useState(0); 
    const [answers, setAnswers] = useState({}); 
    const [currentAnswer, setCurrentAnswer] = useState("");  
- 
+   const [selectedOption, setSelectedOption] = useState("");
    // Function to go to next question
    const goToNextQuestion = () => {
     // If current answer is not empty, store it in answers
      setAnswers({ ...answers, [page]: currentAnswer });
      setPage(page + 1);
      setCurrentAnswer(""); // Clear current answer if moving to next question
- }; 
-   const handleInputChange = (e) => {
+     setSelectedOption("");
+    }; 
+   
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        setCurrentAnswer(option);
+    }
+    const handleInputChange = (e) => {
     // Update current answer
-       setCurrentAnswer(e.target.value);
-   }; 
+    setCurrentAnswer(e.target.value);
+    setSelectedOption("")
+}; 
    const renderQuestion = (question) => {
        return (
        <div key={question.id}>
@@ -24,7 +31,9 @@ function LoveSurvey() {
         {question.options ? (
             // Render options as buttons
             question.options.map((option) => (
-                <button key={option} onClick={() => setCurrentAnswer(option)}>
+                <button key={option} 
+                onClick={() => handleOptionClick(option)}
+                className={selectedOption === option ? "selected" : ""}>
                     {option}
                 </button>
             ))
