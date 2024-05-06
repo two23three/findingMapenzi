@@ -1,0 +1,6 @@
+.selected {
+    background-color: rgb(235, 73, 127) ; 
+    color: #e0c9c9; 
+    font-weight: bold; 
+    border: 1px solid #ccc; 
+  }
