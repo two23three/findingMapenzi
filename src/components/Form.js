@@ -1,7 +1,7 @@
 import React from "react";
 
-function form () {
+function Form () {
     return <div></div>;
 }
 
-export default form
+export default Form
