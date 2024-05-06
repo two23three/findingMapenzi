@@ -27,6 +27,14 @@ function Profile() {
     });
   };
 
+  // Handle gender selection changes
+  const handleGenderChange = (e) => {
+    setProfileData({
+      ...profileData,
+      gender: e.target.value,
+    });
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,11 +71,11 @@ function Profile() {
             <select
               name="gender"
               value={profileData.gender}
-              onChange={handleInputChange}
+              onChange={handleGenderChange}
             >
+              <option value="">Select</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
-              <option value="other">Other</option>
             </select>
           </label>
           <label>
