@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
-  const API_KEY = ''; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
+  const API_KEY = '3c78c7ebf8cf4dbf88d442a2a8591e8a'; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
   useEffect(function() {
     fetch(`https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`)
