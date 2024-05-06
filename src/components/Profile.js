@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 function Profile() {
-  //State that has user profile info
+  // State that has user profile info
   const [profileData, setProfileData] = useState({
     username: '',
     age: '',
     gender: '',
     bio: '',
   });
+
+  // State to track whether the form has been submitted
+  const [submitted, setSubmitted] = useState(false);
 
   // Fetch user profile data from backend upon component mount
   useEffect(() => {
@@ -27,13 +30,14 @@ function Profile() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Send updated profile data to backend for storage
-    // Example: updateProfileData(profileData);
+    setSubmitted(true);
+    // Here you can submit the profileData to the backend
+    // Example: submitProfileData(profileData);
   };
 
   return (
     <div>
-      <h2>Edit Profile</h2>
+      <h2>Profile</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -73,10 +77,18 @@ function Profile() {
             onChange={handleInputChange}
           />
         </label>
-
-
         <button type="submit">Save Changes</button>
       </form>
+
+      {submitted && (
+        <div>
+          <h3>Profile Details:</h3>
+          <p>Username: {profileData.username}</p>
+          <p>Age: {profileData.age}</p>
+          <p>Gender: {profileData.gender}</p>
+          <p>Bio: {profileData.bio}</p>
+        </div>
+      )}
     </div>
   );
 }
