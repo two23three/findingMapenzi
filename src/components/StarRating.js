@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./StarRating.css";
 
 function StarRating({ onRating }) {
   const [rating, setRating] = useState(0); // State to keep track of the current rating

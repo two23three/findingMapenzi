@@ -1,0 +1,17 @@
+.star-rating-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.star-button {
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.star-button.selected {
+  background-color: #ffcc00;
+}
