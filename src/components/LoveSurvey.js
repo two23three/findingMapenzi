@@ -2,12 +2,27 @@ import React, { useState } from "react";
 import data from "../db.json";
 import "./LoveSurvey.css";
 import { Link } from "react-router-dom";
-
+import { firestore } from "../components/firebase";
+import { setDoc,collection, doc } from "firebase/firestore";
 function LoveSurvey() {
  // states for the values we use in the survey
     const [page, setPage] = useState(0);
     const [answers, setAnswers] = useState([]);
     const [submitted, setSubmitted] = useState(false);
+    
+
+    const saveDataToFirebase = async () => {
+        try {
+            const docRef =doc(collection(firestore, "surveyData"), "responses")
+            await setDoc(docRef, {
+                answers: answers
+            });
+            console.log("Data saved to Firebase successfully!", answers);
+        } catch (error) {
+            console.error("Error saving data to Firebase:", error);
+        }
+    };
+    
 
   // handle the option click 
     const handleOptionClick = (option, index) => {
@@ -59,6 +74,7 @@ function LoveSurvey() {
         if (page < Math.ceil(data.questions.length / 3) - 1) {
             setPage(page + 1);
         } else {
+            saveDataToFirebase();
             setSubmitted(true);
         }
     };

@@ -219,5 +219,135 @@
     color: #fff;
    }
   
+   .logout{
+    margin-top: 30px;
+    padding: 0.3em 0.5em;
+    border: 2px solid #ec1414;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .4s;
+    z-index: 1;
+    font-family: inherit;
+    color: #e90000;
+   }
    
+   .logout::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #ad0a0a;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   .logout:hover::before {
+    width: 105%;
+   }
+   
+   .logout:hover {
+    color: #111;
+   }
+   
+   .profile-details-container {
+    background: linear-gradient(135deg, #f14ce3, #45a4f3);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(255, 44, 44, 0.3);
+  }
   
+  .profile-details-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    color: #ec0e90;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(255, 37, 37, 0.5);
+    margin-bottom: 20px;
+  }
+  
+  .profile-details-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .profile-detail {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(255, 48, 245, 0.1);
+    border-radius: 10px;
+  }
+  
+  .detail-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #ff0707;
+    margin-right: 10px;
+  }
+  
+  .detail-value {
+    font-family: 'Montserrat', sans-serif;
+    color: #f0f0f0;
+  }
+  
+  .bio {
+    grid-column: span 2;
+  }
+  
+  /* Profile.css */
+
+/* Styling for the welcome message */
+.welcome-message {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative; /* Needed for absolute positioning */
+  }
+  
+  /* Animation for the welcome message */
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px); /* Slide in from the top */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animated {
+    animation: slideIn 0.5s ease-in-out forwards; /* Slide in animation */
+  }
+  
+  /* Additional styling for the welcome message paragraph */
+  .welcome-paragraph {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
+  /* Styling for the app name */
+  .app-name {
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+  }
+  
+  
+ 
+  
+  
+  
+  
+  
+
