@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import data from "../db.json";
 import "./LoveSurvey.css";
 
+import { Link } from "react-router-dom";
+
 function LoveSurvey() {
     // states for the values we use in the survey
     const [page, setPage] = useState(0);
@@ -90,8 +92,9 @@ function LoveSurvey() {
             {submitted ?(
             <div>
                 <h2>Thank you for for completing the survey 😉!</h2>
-
-                <button>see Suggested Foods</button>                
+                <Link to ="/food-display">
+                <button>see Suggested foods</button>  
+                </Link>              
             </div>
             ):(
             <div>
