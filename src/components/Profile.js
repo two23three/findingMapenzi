@@ -104,63 +104,63 @@ const handleLogin = (e) => {
   };
   
   
+  
 
   return (
-    
-
     <div className="profile-container">
      { isLoggedIn &&<NavBar/>}
       <h2>Profile</h2>
       {!isLoggedIn ? (
         isSigningUp ? (
           <form className="profile-form" onSubmit={handleSignUp}>
-            <label>
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={profileData.username}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Age:
-              <input
-                type="number"
-                name="age"
-                value={profileData.age}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Gender:
-              <select
-                name="gender"
-                value={profileData.gender}
-                onChange={handleInputChange}
-              >
-                <option value="">Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </label>
-            <label>
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={profileData.password}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Bio:
-              <textarea
-                name="bio"
-                value={profileData.bio}
-                onChange={handleInputChange}
-              />
-            </label>
+            <label className='inputbox'>
+  Username*:
+  <input
+    type="text"
+    name="username"
+    value={profileData.username}
+    onChange={handleInputChange}
+  />
+</label>
+<label>
+  Age*:
+  <input
+    type="number"
+    name="age"
+    value={profileData.age}
+    onChange={handleInputChange}
+  />
+</label>
+<label>
+  Gender*:
+  <select
+    name="gender"
+    value={profileData.gender}
+    onChange={handleInputChange}
+  >
+    <option value="">Select</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+</label>
+<label className='inputbox'>
+  Password*:
+  <input
+    type="password"
+    name="password"
+    value={profileData.password}
+    onChange={handleInputChange}
+  />
+</label>
+<label className='inputbox'>
+  Bio*:
+  <textarea
+    name="bio"
+    value={profileData.bio}
+    onChange={handleInputChange}
+  />
+</label>
+
             <button className="submit" type="submit">
               Sign Up
             </button>

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./FoodDisplay.css"; // Import CSS file for styling
+import "./FoodDisplay.css";
+import StarRating from "./StarRating";
 
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
-  const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
+  const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
+
+  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a"; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
   useEffect(() => {
     fetch(
@@ -22,7 +25,6 @@ function FoodDisplay() {
         console.error("Error fetching recipes:", error);
       });
   }, []);
-
   // Function to handle rating updates
   const handleRatingUpdate = (recipeId, rating) => {
     setRatings((prevRatings) => ({
@@ -50,6 +52,11 @@ function FoodDisplay() {
           <a href={recipe.sourceUrl} className="recipe-link">
             View Recipe
           </a>
+
+          <StarRating
+            onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
+          />
+          <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
         </div>
       ))}
     </div>
