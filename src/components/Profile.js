@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
-
+import NavBar from './NavBar';
 function Profile() {
   // State that has user profile info
   const [profileData, setProfileData] = useState(userData);
@@ -105,7 +105,10 @@ const handleLogin = (e) => {
   
 
   return (
+    
+
     <div className="profile-container">
+     { isLoggedIn &&<NavBar/>}
       <h2>Profile</h2>
       {!isLoggedIn ? (
         isSigningUp ? (
@@ -198,7 +201,9 @@ const handleLogin = (e) => {
             </button>
           </div>
         )
-      ) : (
+      ) :
+       (
+       
         <div className="profile-details">
           <h3>Profile Details:</h3>
           <p>Name: {profileData.username}</p>
@@ -206,8 +211,11 @@ const handleLogin = (e) => {
           <p>Gender: {profileData.gender}</p>
           <p>Bio: {profileData.bio}</p>
         </div>
+        
       )}
+     
     </div>
+
   );
 }
 
