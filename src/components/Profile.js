@@ -162,7 +162,7 @@ const handleLogin = (e) => {
             </button>
           </form>
         ) : (
-          <div>
+          <div className='login'>
             <label>
               Username:
               <input
@@ -181,8 +181,21 @@ const handleLogin = (e) => {
                 onChange={handleLoginInputChange}
               />
             </label>
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={() => setIsSigningUp(true)}>Sign Up</button>
+            <button onClick={handleLogin}
+            class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Login</span>
+            </button>
+            <button onClick={() => setIsSigningUp(true)}
+            class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Sign Up</span>
+            
+            </button>
           </div>
         )
       ) : (
