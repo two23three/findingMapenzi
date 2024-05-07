@@ -4,6 +4,7 @@ import StarRating from "./StarRating";
 import NavBar from "./NavBar";
 
 function FoodDisplay() {
+   // State variables
   const [recipes, setRecipes] = useState(null); // Changed initial state to null
   const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,12 +13,15 @@ function FoodDisplay() {
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
+      // Fetch recipes based on search query
       fetchRecipes(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${API_KEY}&number=5`);
     } else {
+      // Fetch 5 random recipes to display
       fetchRecipes(`https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`);
     }
   }, [searchQuery]);
 
+  // Function to fetch recipes from the API
   const fetchRecipes = (url) => {
     fetch(url)
       .then((response) => {
@@ -27,7 +31,7 @@ function FoodDisplay() {
         return response.json();
       })
       .then((data) => {
-        setRecipes(data.recipes || data.results); // Update this line
+        setRecipes(data.recipes || data.results);
       })
       .catch((error) => {
         console.error("Error fetching recipes:", error);
@@ -42,6 +46,7 @@ function FoodDisplay() {
     }));
   }; 
   
+  // Function to handle search query changes
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
@@ -50,6 +55,7 @@ function FoodDisplay() {
     <div className="food-container">
       <NavBar onSearch={handleSearch} />
       <h1 className="food-heading">Random Foods with recipes</h1>
+      {/* Render recipes or loading message based on recipes state */}
       {recipes !== null ? (
         <div className="recipe-grid">
           {recipes.map((recipe, index) => (
