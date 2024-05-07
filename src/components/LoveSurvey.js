@@ -90,10 +90,8 @@ function LoveSurvey() {
             {submitted ?(
             <div>
                 <h2>Thank you for for completing the survey 😉!</h2>
-                <pre className="answers">{JSON.stringify(answers, null, 2)}</pre>
 
-                <button onClick={() => window.location.reload()}>Start Again</button>
-                
+                <button>see Suggested Foods</button>                
             </div>
             ):(
             <div>
