@@ -1,6 +1,17 @@
 /* Profile.css */
 
 .profile-container {
+    width: 100%;
+    height: 100%;
+    --size: 150px; /* control the size */
+    --color: #d1bdbd;
+  
+    background-image: url("../360_F_510267615_CEAnKWAF2POmdefjILHxU3DGb8QRkhU2.jpg");
+    background-size: cover
+  }
+  
+
+.profile-container {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -19,19 +30,66 @@
   .profile-form select,
   .profile-form input[type="password"] {
     width: 100%;
+    position: relative;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  .profile-form button.submit {
-    padding: 10px 20px;
-    background-color: #e708af;
-    color: #fff;
+  .profile-form button {
+    text-decoration: none;
+    position: relative;
     border: none;
-    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
     cursor: pointer;
+    color: #fff;
+    width: 9em;
+    height: 3em;
+    line-height: 2em;
+    text-align: center;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 300%;
+    border-radius: 30px;
+    z-index: 1;
+  }
+  
+  .profile-form button:hover {
+    animation: ani 8s linear infinite;
+    border: none;
+  }
+  
+  @keyframes ani {
+    0% {
+      background-position: 0%;
+    }
+  
+    100% {
+      background-position: 400%;
+    }
+  }
+  
+  .profile-form button:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 35px;
+    transition: 1s;
+  }
+  
+  .profile-form button:hover::before {
+    filter: blur(20px);
+  }
+  
+  .profile-form button:active {
+    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
   }
   
   .profile-details {
@@ -52,63 +110,6 @@
   
   .profile-details p:last-child {
     margin-bottom: 0;
-  }
-  
-
-  .submit {
-    font-family: inherit;
-    font-size: 20px;
-    background: royalblue;
-    color: white;
-    padding: 0.7em 1em;
-    padding-left: 0.9em;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.2s;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .submit span {
-    display: block;
-    margin-left: 0.3em;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .submit svg {
-    display: block;
-    transform-origin: center center;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .submit:hover .svg-wrapper {
-    animation: fly-1 0.6s ease-in-out infinite alternate;
-  }
-  
-  .submit:hover svg {
-    transform: translateX(1.2em) rotate(45deg) scale(1.1);
-  }
-  
-  .submit:hover span {
-    transform: translateX(5em);
-  }
-  
-  .submit:active {
-    transform: scale(0.95);
-  }
-  
-  @keyframes fly-1 {
-    from {
-      transform: translateY(0.1em);
-    }
-  
-    to {
-      transform: translateY(-0.1em);
-    }
   }
 
   .login label {
@@ -217,4 +218,5 @@
     color: #fff;
    }
   
+   
   

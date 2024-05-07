@@ -105,15 +105,13 @@ const handleLogin = (e) => {
   
 
   return (
-    
-
     <div className="profile-container">
      { isLoggedIn &&<NavBar/>}
       <h2>Profile</h2>
       {!isLoggedIn ? (
         isSigningUp ? (
           <form className="profile-form" onSubmit={handleSignUp}>
-            <label>
+            <label className='inputbox'>
               Username:
               <input
                 type="text"
@@ -143,7 +141,7 @@ const handleLogin = (e) => {
                 <option value="Female">Female</option>
               </select>
             </label>
-            <label>
+            <label className='inputbox'>
               Password:
               <input
                 type="password"
@@ -152,7 +150,7 @@ const handleLogin = (e) => {
                 onChange={handleInputChange}
               />
             </label>
-            <label>
+            <label className='inputbox'>
               Bio:
               <textarea
                 name="bio"

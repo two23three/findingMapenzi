@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Profile />} />
-        
         <Route path="/food-display" element={<FoodDisplay />} />
         <Route path="/star-rating" element={<StarRating />} />
       </Routes>
