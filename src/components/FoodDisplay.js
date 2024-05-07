@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./FoodDisplay.css";
 import StarRating from "./StarRating";
 import NavBar from "./NavBar";
+
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
   const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
@@ -25,42 +26,37 @@ function FoodDisplay() {
         console.error("Error fetching recipes:", error);
       });
   }, []);
+
   // Function to handle rating updates
   const handleRatingUpdate = (recipeId, rating) => {
     setRatings((prevRatings) => ({
       ...prevRatings,
       [recipeId]: rating,
     }));
-  };
-  
+  };  
 
   return (
     <div className="food-container">
       <NavBar/>
       <h1 className="food-heading">Random Foods with recipes</h1>
-      {recipes.map((recipe, index) => (
-        <div key={index} className="recipe-card">
-          <h2 className="recipe-title">{recipe.title}</h2>
-          <img src={recipe.image} alt={recipe.title} className="recipe-image" />
-          <p className="recipe-info">
-            Ready in {recipe.readyInMinutes} minutes
-          </p>
-          <p className="recipe-info">Servings: {recipe.servings}</p>
-          <ul className="recipe-ingredients">
-            {recipe.extendedIngredients.map((ingredient, i) => (
-              <li key={i}>{ingredient.original}</li>
-            ))}
-          </ul>
-          <a href={recipe.sourceUrl} className="recipe-link">
-            View Recipe
-          </a>
-
-          <StarRating
-            onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
-          />
-          <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
-        </div>
-      ))}
+      <div className="recipe-grid">
+        {recipes.map((recipe, index) => (
+          <div key={index} className="recipe-card">
+            <h2 className="recipe-title">{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+            <p className="recipe-info">Ready in {recipe.readyInMinutes} minutes</p>
+            <p className="recipe-info">Servings: {recipe.servings}</p>
+            <ul className="recipe-ingredients">
+              {recipe.extendedIngredients.map((ingredient, i) => (
+                <li key={i}>{ingredient.original}</li>
+              ))}
+            </ul>
+            <a href={recipe.sourceUrl} className="recipe-link">View Recipe</a>
+            <StarRating onRating={(rating) => handleRatingUpdate(recipe.id, rating)} />
+            <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
