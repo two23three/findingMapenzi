@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
 import NavBar from './NavBar';
+import LoveSurvey from './LoveSurvey';
 function Profile() {
   // State that has user profile info
   const [profileData, setProfileData] = useState(userData);
@@ -211,6 +212,9 @@ const handleLogin = (e) => {
         </div>
         
       )}
+     <div>
+     {isLoggedIn&& <LoveSurvey/>}
+     </div>
      
     </div>
 

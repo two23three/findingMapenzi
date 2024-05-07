@@ -1,33 +1,65 @@
-import React, { useState } from "react";
-import "./StarRating.css";
+import React, { useState, useEffect } from "react";
+import "./FoodDisplay.css";
+import StarRating from "./StarRating";
 
-function StarRating({ onRating }) {
-  const [rating, setRating] = useState(0); // State to keep track of the current rating
+function FoodDisplay() {
+  const [recipes, setRecipes] = useState([]);
+  const [ratings, setRatings] = useState({});
 
-  function handleClick(index) {
-    setRating(index);
-    onRating(index);
-  }
+  const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
-  // Render a list of buttons for the star ratings
+  useEffect(() => {
+    fetch(
+      `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setRecipes(data.recipes);
+      })
+      .catch((error) => {
+        console.error("Error fetching recipes:", error);
+      });
+  }, []);
+
+  const handleRatingUpdate = (recipeId, rating) => {
+    setRatings((prevRatings) => ({
+      ...prevRatings,
+      [recipeId]: rating,
+    }));
+  };
+
   return (
-    <div className="star-rating-container">
-      {[...Array(5)].map((star, index) => {
-        // Map over an array of 5 elements to create a star rating interface
-        index += 1; // Adjust index to start on 1
-        return (
-          <button
-            type="button"
-            key={index}
-            onClick={() => handleClick(index)}
-            className={`star-button ${index <= rating ? "selected" : ""}`}
-            id={`star-${index}`}
-          ></button>
-        );
-      })}
+    <div className="food-container">
+      <h1 className="food-heading">Random Foods with recipes</h1>
+      {recipes.map((recipe, index) => (
+        <div key={index} className="recipe-card">
+          <h2 className="recipe-title">{recipe.title}</h2>
+          <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+          <p className="recipe-info">
+            Ready in {recipe.readyInMinutes} minutes
+          </p>
+          <p className="recipe-info">Servings: {recipe.servings}</p>
+          <ul className="recipe-ingredients">
+            {recipe.extendedIngredients.map((ingredient, i) => (
+              <li key={i}>{ingredient.original}</li>
+            ))}
+          </ul>
+          <a href={recipe.sourceUrl} className="recipe-link">
+            View Recipe
+          </a>
+          <StarRating
+            onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
+          />
+          <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
+        </div>
+      ))}
     </div>
   );
 }
 
-// Export the StarRating component as the default export
-export default StarRating;
+export default FoodDisplay;
