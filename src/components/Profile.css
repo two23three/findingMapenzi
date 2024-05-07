@@ -145,6 +145,7 @@
    .login button {
     width: 12rem;
     height: auto;
+    padding-right: 10px;
    }
    
    .login button .circle {
