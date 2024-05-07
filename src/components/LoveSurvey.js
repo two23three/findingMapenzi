@@ -1,36 +1,29 @@
 import React, { useState } from "react";
 import data from "../db.json";
 import "./LoveSurvey.css";
-
 import { Link } from "react-router-dom";
 
 function LoveSurvey() {
-    // states for the values we use in the survey
+ // states for the values we use in the survey
     const [page, setPage] = useState(0);
-    const [answers, setAnswers] = useState({});
-    const [currentAnswers, setCurrentAnswers] = useState(Array(10).fill(""));
-    const [selectedOptions, setSelectedOptions] = useState(Array(10).fill(""));
+    const [answers, setAnswers] = useState([]);
     const [submitted, setSubmitted] = useState(false);
-   // handle the option click 
+
+  // handle the option click 
     const handleOptionClick = (option, index) => {
-        // update the selected options
-        const updatedOptions = [...selectedOptions];
-        updatedOptions[page * 3 + index] = option;
-        setSelectedOptions(updatedOptions);
-       // update the current answers
-        const updatedAnswers = [...currentAnswers];
+        const updatedAnswers = [...answers];
         updatedAnswers[page * 3 + index] = option;
-        setCurrentAnswers(updatedAnswers);
+        setAnswers(updatedAnswers);
     };
-    // handle the input change
+ // handle the input change
     const handleInputChange = (e, index) => {
-        const updatedAnswers = [...currentAnswers];
+        const updatedAnswers = [...answers];
         updatedAnswers[page * 3 + index] = e.target.value;
-        setCurrentAnswers(updatedAnswers);
-        setSelectedOptions(Array(10).fill(""));
+        setAnswers(updatedAnswers);
     };
 
     // render the questions
+
     const renderQuestions = () => {
         const startIndex = page * 3;
         const endIndex = Math.min(startIndex + 3, data.questions.length);
@@ -42,20 +35,19 @@ function LoveSurvey() {
                     question.options.map((option) => (
                     // Render options as buttons
 
-                     <button
-                         key={option}
-                         onClick={() => handleOptionClick(option, index)}
-                         className={selectedOptions[page * 3 + index] === option ? "selected" : ""}
-                     >
-                         {option}
-                     </button>
+                        <button
+                            key={option}
+                            onClick={() => handleOptionClick(option, index)}
+                            className={answers[page * 3 + index] === option ? "selected" : ""}
+                        >
+                            {option}
+                        </button>
                     ))
                 ) : (
               // Render a text input for questions without predefined options
-
-                    <input
+              <input
                         type="text"
-                        value={currentAnswers[page * 3 + index]}
+                        value={answers[page * 3 + index] || ""}
                         onChange={(e) => handleInputChange(e, index)}
                     />
                 )}
@@ -64,20 +56,11 @@ function LoveSurvey() {
     };
 
     const goToNextPage = () => {
-        // update the answers
-        const updatedAnswers = { ...answers };
-        currentAnswers.forEach((answer, index) => {
-            updatedAnswers[page * 3 + index] = answer;
-        });
-        setAnswers(updatedAnswers);
         if (page < Math.ceil(data.questions.length / 3) - 1) {
             setPage(page + 1);
-        }else{
-            
-            setSubmitted(true)//when all pages are complete
+        } else {
+            setSubmitted(true);
         }
-        setCurrentAnswers(Array(10).fill(""));
-        setSelectedOptions(Array(10).fill(""));
     };
 
     const goToPreviousPage = () => {
@@ -87,24 +70,23 @@ function LoveSurvey() {
     };
 
     return (
-        
         <div id="LoveForm">
-            {submitted ?(
-            <div>
-                <h2>Thank you for for completing the survey 😉!</h2>
-                <Link to ="/food-display">
-                <button>see Suggested foods</button>  
-                </Link>              
-            </div>
-            ):(
-            <div>
-            {renderQuestions()}
-            <div>
-                
-                <button onClick={goToPreviousPage} disabled={page === 0}>Back</button>
-                <button onClick={goToNextPage}>Next</button>
-            </div>
-        </div>
+            {submitted ? (
+                <div>
+                    <h2>Thank you for completing the survey! 😊</h2>
+                    <pre className="answers">{JSON.stringify(answers, null, 2)}</pre>
+                    <Link to="/food-display">
+                        <button>See Suggested Foods</button>  
+                    </Link>              
+                </div>
+            ) : (
+                <div>
+                    {renderQuestions()}
+                    <div>
+                        <button onClick={goToPreviousPage} disabled={page === 0}>Back</button>
+                        <button onClick={goToNextPage}>Next</button>
+                    </div>
+                </div>
             )}
         </div>
     );
