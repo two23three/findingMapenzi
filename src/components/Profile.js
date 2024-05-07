@@ -108,7 +108,7 @@ const handleLogin = (e) => {
 
   return (
     <div className="profile-container">
-     { isLoggedIn &&<NavBar/>}
+     
       <h2>Profile</h2>
       {!isLoggedIn ? (
         isSigningUp ? (
@@ -206,6 +206,7 @@ const handleLogin = (e) => {
        (
        
         <div className="profile-details">
+          { isLoggedIn &&<NavBar/>}
           <h3>Profile Details:</h3>
           <p>Name: {profileData.username}</p>
           <p>Age: {profileData.age}</p>
