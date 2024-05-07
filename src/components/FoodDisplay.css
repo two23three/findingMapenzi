@@ -1,0 +1,65 @@
+.food-container {
+    background-color: #ffe6e6; /* Light pink background */
+    padding: 20px;
+  }
+  
+  .food-heading {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff4d4d; /* Red color for heading */
+  }
+  
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the width as needed */
+    grid-gap: 20px;
+  }
+  
+  .recipe-card {
+    background-color: #fff; /* White background for recipe card */
+    border: 2px solid #ff4d4d; /* Red border */
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .recipe-title {
+    color: #ff4d4d; /* Red color for recipe title */
+  }
+  
+  .recipe-image {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .recipe-info {
+    color: #666; /* Dark gray color for recipe info */
+  }
+  
+  .recipe-ingredients {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .recipe-ingredients li {
+    margin-bottom: 5px;
+    display: block; /* Display each ingredient on its own line */
+  }
+
+  .recipe-ingredients li:not(:last-child) {
+    border-bottom: 1px solid #ccc; /* Add border-bottom to all list items except the last one */
+    padding-bottom: 5px; /* Add padding to the bottom of each list item */
+  }
+  
+  .recipe-link {
+    display: inline-block;
+    background-color: #ff4d4d; /* Red background for link */
+    color: #fff; /* White text color */
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .recipe-link:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+  
