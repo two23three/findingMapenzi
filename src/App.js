@@ -1,16 +1,22 @@
 import "./App.css";
 import Profile from "./components/Profile";
 import React from "react";
-import LoveSurvey from "./components/LoveSurvey";
 import FoodDisplay from "./components/FoodDisplay";
+import StarRating from "./components/StarRating";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <Profile />
-      <LoveSurvey />
-      <FoodDisplay />
+      <Routes>
+        <Route path="/" element={<Profile />} />
+        
+        <Route path="/food-display" element={<FoodDisplay />} />
+        <Route path="/star-rating" element={<StarRating />} />
+      </Routes>
     </div>
+  </Router>
   );
 }
 

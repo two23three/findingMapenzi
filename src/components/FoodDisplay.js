@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import StarRating from "./StarRating";
 import "./FoodDisplay.css"; // Import CSS file for styling
 
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
-  const [ratings, setRatings] = useState({});
   const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
   useEffect(() => {
@@ -52,10 +50,6 @@ function FoodDisplay() {
           <a href={recipe.sourceUrl} className="recipe-link">
             View Recipe
           </a>
-          <StarRating
-            onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
-          />
-          <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
         </div>
       ))}
     </div>

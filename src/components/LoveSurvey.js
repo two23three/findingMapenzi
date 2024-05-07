@@ -71,6 +71,7 @@ function LoveSurvey() {
         if (page < Math.ceil(data.questions.length / 3) - 1) {
             setPage(page + 1);
         }else{
+            
             setSubmitted(true)//when all pages are complete
         }
         setCurrentAnswers(Array(10).fill(""));
@@ -84,10 +85,15 @@ function LoveSurvey() {
     };
 
     return (
+        
         <div id="LoveForm">
             {submitted ?(
             <div>
                 <h2>Thank you for for completing the survey 😉!</h2>
+                <pre className="answers">{JSON.stringify(answers, null, 2)}</pre>
+
+                <button onClick={() => window.location.reload()}>Start Again</button>
+                
             </div>
             ):(
             <div>
