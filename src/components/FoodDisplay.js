@@ -51,6 +51,13 @@ function FoodDisplay() {
     setSearchQuery(query);
   };
 
+  // Function to handle a recipe deletion
+  const handleDeleteRecipe = (index) => {
+    const updatedRecipes = [...recipes];
+    updatedRecipes.splice(index, 1);
+    setRecipes(updatedRecipes);
+  }; 
+
   return (
     <div className="food-container">
       <NavBar onSearch={handleSearch} />
@@ -78,6 +85,7 @@ function FoodDisplay() {
               <a href={recipe.sourceUrl} className="recipe-link">View Recipe</a>
               <StarRating onRating={(rating) => handleRatingUpdate(recipe.id, rating)} />
               <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
+              <button onClick={() => handleDeleteRecipe(index)}>Delete</button>
             </div>
           ))}
         </div>
