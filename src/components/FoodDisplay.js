@@ -6,7 +6,7 @@ function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
   const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
 
-  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a"; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
+  const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
   useEffect(() => {
     fetch(
