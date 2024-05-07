@@ -36,25 +36,28 @@ function Profile() {
   };
 
   // Handle login submission
-  const handleLogin = (e) => {
+const handleLogin = (e) => {
     e.preventDefault();
-
-    // Retrieve profile data from local storage
-    const storedProfileData = JSON.parse(localStorage.getItem('userProfiles'));
-
-    // Check if username and password match stored profile data
-    const loggedInUser = storedProfileData.find(
+  
+    // Retrieve user profiles from local storage
+    const storedUserProfiles = JSON.parse(localStorage.getItem('userProfiles'));
+  
+    // Find the logged-in user by username and password
+    const loggedInUser = storedUserProfiles.find(
       (user) =>
         user.username === loginCredentials.username &&
         user.password === loginCredentials.password
     );
-
+  
+    // If the logged-in user is found, update profileData and set isLoggedIn to true
     if (loggedInUser) {
+      setProfileData(loggedInUser);
       setIsLoggedIn(true);
     } else {
       alert('Invalid username or password.');
     }
   };
+  
 
   // Handle form input changes for sign-up
   const handleInputChange = (e) => {
@@ -98,6 +101,7 @@ function Profile() {
     setIsSigningUp(false);
     setIsLoggedIn(true);
   };
+  
   
 
   return (
