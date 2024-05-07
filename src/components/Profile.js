@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
 
 function Profile() {
   // State that has user profile info
-  const [profileData, setProfileData] = useState({
-    username: '',
-    age: '',
-    gender: '',
-    bio: '',
-    password: '',
-  });
+  const [profileData, setProfileData] = useState(userData);
 
   // State to track whether the user is signing up or logging in
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -23,11 +18,11 @@ function Profile() {
     password: '',
   });
 
-  // Fetch user profile data from local storage upon component mount
+  // Fetch user profiles from local storage upon component mount
   useEffect(() => {
-    const storedProfileData = localStorage.getItem('profileData');
-    if (storedProfileData) {
-      setProfileData(JSON.parse(storedProfileData));
+    const storedUserProfiles = localStorage.getItem('userProfiles');
+    if (storedUserProfiles) {
+      setProfileData(JSON.parse(storedUserProfiles));
     }
   }, []);
 
@@ -45,14 +40,16 @@ function Profile() {
     e.preventDefault();
 
     // Retrieve profile data from local storage
-    const storedProfileData = JSON.parse(localStorage.getItem('profileData'));
+    const storedProfileData = JSON.parse(localStorage.getItem('userProfiles'));
 
     // Check if username and password match stored profile data
-    if (
-      storedProfileData &&
-      storedProfileData.username === loginCredentials.username &&
-      storedProfileData.password === loginCredentials.password
-    ) {
+    const loggedInUser = storedProfileData.find(
+      (user) =>
+        user.username === loginCredentials.username &&
+        user.password === loginCredentials.password
+    );
+
+    if (loggedInUser) {
       setIsLoggedIn(true);
     } else {
       alert('Invalid username or password.');
@@ -68,10 +65,9 @@ function Profile() {
     });
   };
 
-  // Handle sign-up submission
   const handleSignUp = (e) => {
     e.preventDefault();
-
+  
     // Check if any field is empty
     for (const key in profileData) {
       if (profileData[key] === '') {
@@ -79,20 +75,30 @@ function Profile() {
         return; // Exit the function without setting submitted state
       }
     }
-
+  
     // Check if the age is below 18
     if (profileData.age < 18) {
       alert('You must be 18 years or older to sign up.');
       return; // Exit the function without setting submitted state
     }
-
-    // Save profile data to local storage
-    localStorage.setItem('profileData', JSON.stringify(profileData));
-
-    // Set signing up status to false and log the user in
+  
+    // Retrieve existing user data from local storage
+    const existingUserData = JSON.parse(localStorage.getItem('userProfiles')) || [];
+  
+    // Create a new user profile object
+    const newUserProfile = { ...profileData };
+  
+    // Add the new user profile to the existing array
+    const newUserProfiles = [...existingUserData, newUserProfile];
+  
+    // Save the updated array back to local storage
+    localStorage.setItem('userProfiles', JSON.stringify(newUserProfiles));
+  
+    // Optionally, you can also update the state to reflect the logged-in status
     setIsSigningUp(false);
     setIsLoggedIn(true);
   };
+  
 
   return (
     <div className="profile-container">
@@ -147,7 +153,7 @@ function Profile() {
                 onChange={handleInputChange}
               />
             </label>
-            <button className='submit' type='submit'>
+            <button className="submit" type="submit">
               Sign Up
             </button>
           </form>
