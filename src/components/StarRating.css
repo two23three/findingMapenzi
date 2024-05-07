@@ -13,8 +13,9 @@
 }
 
 .star-button.selected {
-  background-color: #ffcc00;
+  background-color: #ffd700;
 }
+
 .star-button:hover {
   background-color: #fc7507;
 }
