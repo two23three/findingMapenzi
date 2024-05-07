@@ -3,7 +3,7 @@
 .profile-container {
     width: 100%;
     height: 100%;
-    --size: 150px; /* control the size */
+    --size: 200px; /* control the size */
     --color: #d1bdbd;
   
     background-size: cover
@@ -11,12 +11,14 @@
   
 
 .profile-container {
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+  
   
   .profile-form label {
     display: block;

@@ -34,7 +34,7 @@ function NavBar({ onSearch }) {
                     value={searchQuery}
                     onChange={handleInputChange}
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button  className="button" onClick={handleSearch}>Search</button>
             </div>
             {/*themes*/}
             <img src="" alt="" className="toggle-icon"/>
