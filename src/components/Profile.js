@@ -76,14 +76,14 @@ const handleLogin = (e) => {
     for (const key in profileData) {
       if (profileData[key] === '') {
         alert('Please fill in all fields.');
-        return; // Exit the function without setting submitted state
+        return;
       }
     }
   
     // Check if the age is below 18
     if (profileData.age < 18) {
       alert('You must be 18 years or older to sign up.');
-      return; // Exit the function without setting submitted state
+      return;
     }
   
     // Retrieve existing user data from local storage
@@ -104,7 +104,6 @@ const handleLogin = (e) => {
   };
   
   
-  
 
   return (
     <div>
@@ -112,67 +111,73 @@ const handleLogin = (e) => {
     <div className="profile-container">
   
      
-      <h2>Profile</h2>
       {!isLoggedIn ? (
         isSigningUp ? (
-          <form className="profile-form" onSubmit={handleSignUp}>
+            <form className="profile-form" onSubmit={handleSignUp}>
+            <label className='inputbox'>Username
+              <input
+              placeholder="What's your Name?"
+                type="text"
+                name="username"
+                value={profileData.username}
+                onChange={handleInputChange}
+                required // Ensure the field is required
+              />
+            </label>
+            <label>Age
+              <input
+              placeholder='Enter your Age'
+                type="number"
+                name="age"
+                value={profileData.age}
+                onChange={handleInputChange}
+                required // Ensure the field is required
+              />
+            </label>
+            <label>
+              Gender
+              <select
+                name="gender"
+                value={profileData.gender}
+                onChange={handleInputChange}
+                required // Ensure the field is required
+              >
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </label>
             <label className='inputbox'>
-  Username*:
-  <input
-    type="text"
-    name="username"
-    value={profileData.username}
-    onChange={handleInputChange}
-  />
-</label>
-<label>
-  Age*:
-  <input
-    type="number"
-    name="age"
-    value={profileData.age}
-    onChange={handleInputChange}
-  />
-</label>
-<label>
-  Gender*:
-  <select
-    name="gender"
-    value={profileData.gender}
-    onChange={handleInputChange}
-  >
-    <option value="">Select</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-  </select>
-</label>
-<label className='inputbox'>
-  Password*:
-  <input
-    type="password"
-    name="password"
-    value={profileData.password}
-    onChange={handleInputChange}
-  />
-</label>
-<label className='inputbox'>
-  Bio*:
-  <textarea
-    name="bio"
-    value={profileData.bio}
-    onChange={handleInputChange}
-  />
-</label>
-
+              Password
+              <input
+              placeholder='Enter a strong password'
+                type="password"
+                name="password"
+                value={profileData.password}
+                onChange={handleInputChange}
+                required // Ensure the field is required
+              />
+            </label>
+            <label className='inputbox'>
+              Bio
+              <textarea
+              placeholder='Tell us a little about yourself'
+                name="bio"
+                value={profileData.bio}
+                onChange={handleInputChange}
+                required // Ensure the field is required
+              />
+            </label>
             <button className="submit" type="submit">
               Sign Up
             </button>
           </form>
+          
         ) : (
           <div className='login'>
             <label>
-              Username:
               <input
+              placeholder='Username'
                 type="text"
                 name="username"
                 value={loginCredentials.username}
@@ -180,8 +185,8 @@ const handleLogin = (e) => {
               />
             </label>
             <label>
-              Password:
               <input
+              placeholder='Enter Password'
                 type="password"
                 name="password"
                 value={loginCredentials.password}
@@ -208,14 +213,35 @@ const handleLogin = (e) => {
       ) :
        (
        <div>
-        <div className="profile-details">
-         
-          <h3>Profile Details:</h3>
-          <p>Name: {profileData.username}</p>
-          <p>Age: {profileData.age}</p>
-          <p>Gender: {profileData.gender}</p>
-          <p>Bio: {profileData.bio}</p>
-        </div>
+        <div className="profile-details-container">
+  <h3 className="profile-details-title">KARIBU!!!</h3>
+  <p className="welcome-message animated">
+              Welcome to FindingMapenzi {profileData.username}! We're thrilled to have you. Please take a moment to fill out
+              your preferences in the LoveSurvey below.This is only to help us enhance your experience here!
+            </p>  
+    <div className="profile-details-content">
+    <div className="profile-detail">
+      <span className="detail-label">Name:</span>
+      <span className="detail-value">{profileData.username}</span>
+    </div>
+    <div className="profile-detail">
+      <span className="detail-label">Age:</span>
+      <span className="detail-value">{profileData.age}</span>
+    </div>
+    <div className="profile-detail">
+      <span className="detail-label">Gender:</span>
+      <span className="detail-value">{profileData.gender}</span>
+    </div>
+    <div className="profile-detail">
+      <span className="detail-label">Bio:</span>
+      <span className="detail-value">{profileData.bio}</span>
+    </div>
+  </div>
+  <button className="logout" onClick={() => setIsLoggedIn(false)}>Logout</button>
+</div>
+
+
+
         </div>
         
       )}
