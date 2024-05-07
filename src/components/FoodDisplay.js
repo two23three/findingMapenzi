@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./FoodDisplay.css";
 import StarRating from "./StarRating";
-
+import NavBar from "./NavBar";
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
   const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
@@ -32,9 +32,11 @@ function FoodDisplay() {
       [recipeId]: rating,
     }));
   };
+  
 
   return (
     <div className="food-container">
+      <NavBar/>
       <h1 className="food-heading">Random Foods with recipes</h1>
       {recipes.map((recipe, index) => (
         <div key={index} className="recipe-card">
