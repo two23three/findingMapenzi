@@ -1,46 +1,49 @@
 import React, { useState, useEffect } from "react";
+import "./FoodDisplay.css"; // Import CSS file for styling
 
 function FoodDisplay() {
   const [recipes, setRecipes] = useState([]);
   const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a has 150 daily quota
 
-  useEffect(function () {
+  useEffect(() => {
     fetch(
       `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
     )
-      .then(function (response) {
+      .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(function (data) {
+      .then((data) => {
         setRecipes(data.recipes);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error("Error fetching recipes:", error);
       });
   }, []);
 
   return (
-    <div>
-      <h1>Random Foods</h1>
-      {recipes.map(function (recipe, index) {
-        return (
-          <div key={index}>
-            <h2>{recipe.title}</h2>
-            <img src={recipe.image} alt={recipe.title} />
-            <p>Ready in {recipe.readyInMinutes} minutes</p>
-            <p>Servings: {recipe.servings}</p>
-            <ul>
-              {recipe.extendedIngredients.map(function (ingredient, i) {
-                return <li key={i}>{ingredient.original}</li>;
-              })}
-            </ul>
-            <a href={recipe.sourceUrl}>View Recipe</a>
-          </div>
-        );
-      })}
+    <div className="food-container">
+      <h1 className="food-heading">Random Foods with recipes</h1>
+      {recipes.map((recipe, index) => (
+        <div key={index} className="recipe-card">
+          <h2 className="recipe-title">{recipe.title}</h2>
+          <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+          <p className="recipe-info">
+            Ready in {recipe.readyInMinutes} minutes
+          </p>
+          <p className="recipe-info">Servings: {recipe.servings}</p>
+          <ul className="recipe-ingredients">
+            {recipe.extendedIngredients.map((ingredient, i) => (
+              <li key={i}>{ingredient.original}</li>
+            ))}
+          </ul>
+          <a href={recipe.sourceUrl} className="recipe-link">
+            View Recipe
+          </a>
+        </div>
+      ))}
     </div>
   );
 }

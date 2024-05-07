@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "username": "exampleUser",
+            "age": 25,
+            "gender": "Male",
+            "bio": "This is a sample bio.",
+            "password": "examplePassword"
+          }
+          
+
+
+
+
+    ]
+}
+  
