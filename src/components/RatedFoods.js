@@ -1,9 +1,12 @@
 // RatedFoods.js
 import React from "react";
+import NavBar from "./NavBar";
 
 function RatedFoods({ ratings }) {
   return (
+    
     <div className="rated-foods-container">
+      <NavBar />
       <h1 className="rated-foods-title">Rated Foods</h1>
       <div className="rated-foods-list">
         {Object.entries(ratings).map(([recipeId, recipeData], index) => (
