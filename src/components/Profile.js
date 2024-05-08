@@ -5,7 +5,15 @@ import NavBar from './NavBar';
 
 function Profile() {
   // State that has user profile info
-  const [profileData, setProfileData] = useState(userData);
+const [profileData, setProfileData] = useState(() => {
+  const storedUserProfiles = localStorage.getItem('userProfiles');
+  if (storedUserProfiles) {
+    return JSON.parse(storedUserProfiles);
+  } else {
+    return userData; // Use default user data if no profiles are stored
+  }
+});
+
 
   // State to track whether the user is signing up or logging in
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -43,28 +51,34 @@ function Profile() {
   };
 
   // Handle login submission
-  const handleLogin = (e) => {
-    e.preventDefault();
+const handleLogin = (e) => {
+  e.preventDefault();
 
-    // Retrieve user profiles from local storage
-    const storedUserProfiles = JSON.parse(localStorage.getItem('userProfiles'));
+  // Retrieve user profiles from local storage
+  const storedUserProfiles = JSON.parse(localStorage.getItem('userProfiles'));
 
-    // Find the logged-in user by username and password
-    const loggedInUser = storedUserProfiles.find(
-      (user) =>
-        user.username === loginCredentials.username &&
-        user.password === loginCredentials.password
-    );
+  // Find the logged-in user by username and password
+  const loggedInUser = storedUserProfiles.find(
+    (user) =>
+      user.username === loginCredentials.username &&
+      user.password === loginCredentials.password
+  );
 
-    // If the logged-in user is found, update profileData, set isLoggedIn to true, and store the login status
-    if (loggedInUser) {
-      setProfileData(loggedInUser);
-      setIsLoggedIn(true);
-      localStorage.setItem('isLoggedIn', 'true');
-    } else {
-      alert('Invalid username or password.');
-    }
-  };
+  // If the logged-in user is found, update profileData, set isLoggedIn to true, and store the login status
+  if (loggedInUser) {
+    setProfileData(loggedInUser);
+    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true');
+  } else {
+    alert('Invalid username or password.');
+  }
+};
+
+// Update profile data in local storage when profileData changes
+useEffect(() => {
+  localStorage.setItem('userProfiles', JSON.stringify(profileData));
+}, [profileData]);
+
 
   // Handle form input changes for sign-up
   const handleInputChange = (e) => {
