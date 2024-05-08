@@ -4,6 +4,7 @@ import "./LoveSurvey.css";
 import { Link } from "react-router-dom";
 import { firestore } from "../components/firebase";
 import { setDoc,collection, doc } from "firebase/firestore";
+import NavBar from "./NavBar";
 function LoveSurvey() {
  // states for the values we use in the survey
     const [page, setPage] = useState(0);
@@ -87,6 +88,7 @@ function LoveSurvey() {
 
     return (
         <div id="LoveForm">
+            <NavBar />
             {submitted ? (
                 <div>
                     <h2>Thank you for completing the survey! 😊</h2>
