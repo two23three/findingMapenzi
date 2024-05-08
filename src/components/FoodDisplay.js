@@ -8,7 +8,7 @@ function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a";//3c78c7ebf8cf4dbf88d442a2a8591e8a
+  const API_KEY = '';//3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
