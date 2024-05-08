@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
 import NavBar from './NavBar';
-
+import { Link } from 'react-router-dom';
 function Profile() {
   // State that has user profile info
   const [profileData, setProfileData] = useState(userData);
@@ -217,6 +217,9 @@ const handleLogin = (e) => {
               Welcome to FindingMapenzi {profileData.username}! We're thrilled to have you. Please take a moment to fill out
               your preferences in the LoveSurvey below.This is only to help us enhance your experience here!
             </p>  
+            <li>
+          <Link to="/LoveSurvey">LoveForm</Link>
+           </li>
     <div className="profile-detail">
       <span className="detail-label">Age:</span>
       <span className="detail-value">{profileData.age}</span>
