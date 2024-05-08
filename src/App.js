@@ -4,7 +4,6 @@ import React from "react";
 import FoodDisplay from "./components/FoodDisplay";
 import StarRating from "./components/StarRating";
 import LoveSurvey from "./components/LoveSurvey";
-import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
