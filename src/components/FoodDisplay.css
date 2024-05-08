@@ -57,9 +57,28 @@
     border-radius: 5px;
     text-decoration: none;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .recipe-link:hover {
     background-color: #cc0000; /* Darker red on hover */
+  }
+
+  .recipe-rating {
+    color: #666; /* Dark gray color for rating text */
+    margin-top: 5px; /* Add some space between the delete button and rating */
+  }
+
+  .recipe-delete-button {
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text color */
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .recipe-delete-button:hover {
+    background-color: #555; /* Darker gray on hover */
   }
   

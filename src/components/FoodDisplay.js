@@ -8,7 +8,7 @@ function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const API_KEY = "";//3c78c7ebf8cf4dbf88d442a2a8591e8a
+  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a";//3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
@@ -100,8 +100,13 @@ function FoodDisplay({ setRatings }) {
               <StarRating
                 onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
               />
-              <p>Rating: {recipe.rating || "No rating yet"}</p>
-              <button onClick={() => handleDeleteRecipe(index)}>Delete</button>
+              <p className="recipe-rating">Rating: {recipe.rating || "No rating yet"}</p>
+              <button 
+                className="recipe-delete-button" 
+                onClick={() => handleDeleteRecipe(index)}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
