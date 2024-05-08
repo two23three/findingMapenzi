@@ -1,9 +1,5 @@
-.selected {
-    background-color: rgb(235, 73, 127) ; 
-    color: #e0c9c9; 
-    font-weight: bold; 
-    border: 1px solid #ccc; 
-  }
+
+
   :root {
     --navbar-background-light: #ffffff;
     --text-color-light: #000000;
@@ -136,5 +132,12 @@
 .LoveForm.dark {
   background-color: #333333;
   color: #ffffff;
+}
+.selected-option {
+  background-color: var(--glow-spread-color);
+  color: var(--btn-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+              0 0 4em 2em var(--glow-spread-color),
+              inset 0 0 .75em .25em var(--glow-color);
 }
 
