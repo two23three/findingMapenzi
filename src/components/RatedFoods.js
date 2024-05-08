@@ -1,6 +1,7 @@
 // RatedFoods.js
 import React from "react";
 import NavBar from "./NavBar";
+import "./RatedFoods.css";
 
 function RatedFoods({ ratings }) {
   return (
