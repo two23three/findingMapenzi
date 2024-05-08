@@ -9,7 +9,7 @@ function FoodDisplay() {
   const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
   const [searchQuery, setSearchQuery] = useState("");
 
-  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a";
+  const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
