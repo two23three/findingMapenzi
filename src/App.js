@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Adjust the delay time as needed
+    }, 3000); // Adjust the delay time as needed
 
     return () => clearTimeout(timeout);
   }, []);

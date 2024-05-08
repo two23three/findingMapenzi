@@ -1,3 +1,14 @@
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.loading svg{
+  width: 100px;
+  height: 100px;
+}
+
 .loading svg polyline {
     fill: none;
     stroke-width: 3;
