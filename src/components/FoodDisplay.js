@@ -3,6 +3,7 @@ import "./FoodDisplay.css";
 import StarRating from "./StarRating";
 import NavBar from "./NavBar";
 
+// State variables
 function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,24 +13,35 @@ function FoodDisplay({ setRatings }) {
   useEffect(() => {
     if (searchQuery.trim() !== "") {
       fetchRecipes(
+        // Fetch recipes based on search query
         `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${API_KEY}&number=5`
       );
     } else {
       fetchRecipes(
+        // Fetch 5 random recipes to display
         `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
       );
     }
   }, [searchQuery]);
 
+  // Function to fetch recipes from the API
   const fetchRecipes = (url) => {
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
       .then((data) => {
         setRecipes(data.recipes || data.results);
       })
-      .catch((error) => console.error("Error fetching recipes:", error));
+      .catch((error) => {
+        console.error("Error fetching recipes:", error);
+      });
   };
 
+  // Function to handle rating updates
   const handleRatingUpdate = (recipeId, rating) => {
     const recipe = recipes.find((r) => r.id === recipeId);
     if (recipe) {
@@ -40,10 +52,12 @@ function FoodDisplay({ setRatings }) {
     }
   };
 
+  // Function to handle search query changes
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
+  // Function to handle a recipe deletion
   const handleDeleteRecipe = (index) => {
     const updatedRecipes = [...recipes];
     updatedRecipes.splice(index, 1);
@@ -54,6 +68,7 @@ function FoodDisplay({ setRatings }) {
     <div className="food-container">
       <NavBar onSearch={handleSearch} />
       <h1 className="food-heading">Random Foods with recipes</h1>
+      {/* Render recipes or loading message based on recipes state */}
       {recipes !== null ? (
         <div className="recipe-grid">
           {recipes.map((recipe, index) => (
