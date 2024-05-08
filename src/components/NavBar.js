@@ -15,7 +15,7 @@ function NavBar({ onSearch }) {
       onSearch(searchQuery);
       setSearchQuery(""); // Clear the search input after search
     };
-
+//styles
     return (
         <div className="navbar">
             {/*heart logo */}
