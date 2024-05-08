@@ -348,6 +348,23 @@
   .profile-container.light {
     background-color: var(--light-mode-color);
   }
+  :root {
+    --navbar-background-light:rgb(255, 200, 210);
+    --text-color-light: #141010;
+    --navbar-background-dark: #311212;
+    --text-color-dark: #ffffff;
+  }
+  .profile-container.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Dark mode styles */
+  .profile-container.dark {
+    background-color: #333333;
+    color: #ffffff;
+  }
+  
   
   
  

@@ -47,7 +47,7 @@ function LoveSurvey() {
         const endIndex = Math.min(startIndex + 3, data.questions.length);
 
         return data.questions.slice(startIndex, endIndex).map((question, index) => (
-            <div key={question.id} className={theme}>
+            <div key={question.id}>
                 <h2>{question.text}</h2>
                 {question.options ? (
                     question.options.map((option) => (
@@ -89,7 +89,7 @@ function LoveSurvey() {
 
     return (<>
         <NavBar />
-        <div id="LoveForm" className={theme}>
+        <div className={`LoveForm ${theme}`}>
             {submitted ? (
                 <div>
                     <h2>Thank you for completing the survey! 😊</h2>

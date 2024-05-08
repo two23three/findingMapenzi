@@ -24,7 +24,7 @@
 /* LoveSurvey.css */
 
 /* Container styles */
-#LoveForm {
+.LoveForm {
   background: linear-gradient(to bottom, #000000, #4c0033);
   color: #fff;
   font-family: 'Arial', sans-serif;
@@ -33,13 +33,13 @@
 }
 
 /* Survey header styles */
-#LoveForm h2 {
+.LoveForm h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
 /* Question styles */
-#LoveForm .question-container {
+.LoveForm .question-container {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   margin-bottom: 30px;
@@ -47,14 +47,14 @@
 }
 
 /* Option styles */
-#LoveForm .option-container {
+.LoveForm .option-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 /* Text input styles */
-#LoveForm input[type="text"] {
+.LoveForm input[type="text"] {
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 5px;
@@ -66,7 +66,7 @@
 }
 
 
-#LoveForm button {
+.LoveForm button {
   --glow-color: rgb(217, 176, 255);
   --glow-spread-color: rgba(191, 123, 255, 0.781);
   --enhanced-glow-color: rgb(231, 206, 255);
@@ -88,7 +88,7 @@
   transition: all 0.3s;
  }
  
- #LoveForm button::after {
+ .LoveForm button::after {
   pointer-events: none;
   content: "";
   position: absolute;
@@ -102,7 +102,7 @@
   transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
  }
  
- #LoveForm button:hover {
+ .LoveForm button:hover {
   color: var(--btn-color);
   background-color: var(--glow-color);
   box-shadow: 0 0 1em .25em var(--glow-color),
@@ -110,15 +110,31 @@
          inset 0 0 .75em .25em var(--glow-color);
  }
  
- #LoveForm button:active {
+ .LoveForm button:active {
   box-shadow: 0 0 0.6em .25em var(--glow-color),
          0 0 2.5em 2em var(--glow-spread-color),
          inset 0 0 .5em .25em var(--glow-color);
  }
 
 /* "Thank you" message styles */
-#LoveForm .thank-you-message {
+.LoveForm .thank-you-message {
   font-size: 20px;
   margin-top: 20px;
+}
+:root {
+  --navbar-background-light:rgb(255, 200, 210);
+  --text-color-light: #141010;
+  --navbar-background-dark: #311212;
+  --text-color-dark: #ffffff;
+}
+.LoveForm.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode styles */
+.LoveForm.dark {
+  background-color: #333333;
+  color: #ffffff;
 }
 

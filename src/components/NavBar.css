@@ -82,13 +82,13 @@ ul li {
 }
 /* NavBar.css */
 :root {
-    --navbar-background-light: #ec6f6f;
+    --navbar-background-light:rgb(255, 200, 210);
     --text-color-light: #141010;
-    --navbar-background-dark: #632121;
+    --navbar-background-dark: #311212;
     --text-color-dark: #ffffff;
   }
   
-  .navbar {
+  .navbar.light{
     background-color: var(--navbar-background-light);
     color: var(--text-color-light);
   }

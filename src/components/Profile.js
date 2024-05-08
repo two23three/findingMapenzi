@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
 import NavBar from './NavBar';
+import { useTheme } from "../ThemeContext";
 
 function Profile() {
+  const { theme } = useTheme(); 
   // State that has user profile info
 const [profileData, setProfileData] = useState(() => {
   const storedUserProfiles = localStorage.getItem('userProfiles');
@@ -127,7 +129,7 @@ useEffect(() => {
   return (
     <div>
       {isLoggedIn && <NavBar />}
-      <div className="profile-container">
+      <div className={`profile-container ${theme}`}>
         {!isLoggedIn ? (
           isSigningUp ? (
             <form className="profile-form" onSubmit={handleSignUp}>
