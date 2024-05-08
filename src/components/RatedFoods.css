@@ -1,0 +1,36 @@
+.rated-foods-container {
+    background-color: #ffe6e6; /* Light pink background */
+    padding: 20px;
+  }
+  
+  .rated-foods-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ff4d4d; /* Red color for heading */
+  }
+  
+  .rated-foods-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .rated-food-item {
+    background-color: #fff; /* White background for item */
+    border: 2px solid #ff4d4d; /* Red border */
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .rated-food-item h2 {
+    color: #ff4d4d; /* Red color for item title */
+  }
+  
+  .rated-food-item img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .rated-food-item p {
+    color: #666; /* Dark gray color for rating text */
+  }
+  
