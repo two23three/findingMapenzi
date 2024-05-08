@@ -4,3 +4,19 @@
     font-weight: bold; 
     border: 1px solid #ccc; 
   }
+  :root {
+    --navbar-background-light: #ffffff;
+    --text-color-light: #000000;
+    --navbar-background-dark: #222222;
+    --text-color-dark: #ffffff;
+  }
+  
+  .navbar {
+    background-color: var(--navbar-background-light);
+    color: var(--text-color-light);
+  }
+  
+  .navbar.dark {
+    background-color: var(--navbar-background-dark);
+    color: var(--text-color-dark);
+  }

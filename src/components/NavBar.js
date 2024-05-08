@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../ThemeContext"; // Import useTheme hook
 import "./NavBar.css";
 
 function NavBar({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const { theme, toggleTheme } = useTheme(); // Access theme and toggleTheme function
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -15,7 +17,7 @@ function NavBar({ onSearch }) {
   };
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${theme}`}>
       <img src="" alt="" className="logo" />
       <p className="note">Find Love with food</p>
       <ul>
@@ -44,7 +46,9 @@ function NavBar({ onSearch }) {
           Search
         </button>
       </div>
-      <img src="" alt="" className="toggle-icon" />
+      <button className="toggle-button" onClick={toggleTheme}>
+        {theme === "light" ? "🌙" : "☀️"}
+      </button>
     </div>
   );
 }
