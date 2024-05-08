@@ -245,5 +245,4 @@ const handleLogin = (e) => {
 
   );
 }
-
 export default Profile;
