@@ -258,7 +258,7 @@
    }
    
    .profile-details-container {
-    background: linear-gradient(135deg, #f14ce3, #45a4f3);
+    background: linear-gradient(135deg, #f14ce3, #3493e0);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 4px 20px rgba(255, 44, 44, 0.3);
@@ -340,7 +340,7 @@
   /* Styling for the app name */
   .app-name {
     font-weight: bold;
-    color: #007bff; /* Blue color */
+    color: #285688; /* Blue color */
   }
   
   
