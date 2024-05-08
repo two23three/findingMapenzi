@@ -394,7 +394,7 @@
   border: 1px solid var(--light-gray);
   border-radius: 5px;
   background-color: var(--purple); /* Purple input background */
-  color: white; /* White text */
+  color: rgb(0, 0, 0); /* White text */
 }
 
 .profile-form button {
