@@ -23,9 +23,9 @@ function NavBar({ onSearch }) {
         <p className="note">Find Love with food</p>
             <ul>
                 {/* links */}
-                <li><Link to="/LoveSurvey"></Link>LoveForm</li>
-                <li><Link to="/Profile"></Link>Profile</li>
-                <li><Link to="/FoodDisplay"></Link>FoodForDate</li>
+                <li><Link to="/LoveSurvey">LoveForm</Link></li>
+                <li><Link to="/">Profile</Link></li>
+                <li><Link to="/FoodDisplay">FoodForDate</Link></li>
             </ul>
             <div className="searchbar">
                 <input
