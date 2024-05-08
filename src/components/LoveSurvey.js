@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import data from "../db.json";
 import "./LoveSurvey.css";
 import { Link } from "react-router-dom";
+import { useTheme } from "../ThemeContext"; // Import useTheme hook
 import { firestore } from "../components/firebase";
 import { setDoc,collection, doc } from "firebase/firestore";
 import NavBar from "./NavBar";
+
 function LoveSurvey() {
- // states for the values we use in the survey
+    // states for the values we use in the survey
     const [page, setPage] = useState(0);
     const [answers, setAnswers] = useState([]);
     const [submitted, setSubmitted] = useState(false);
-    
+    const { theme } = useTheme(); // Access theme from the theme context
 
     const saveDataToFirebase = async () => {
         try {
@@ -23,15 +25,15 @@ function LoveSurvey() {
             console.error("Error saving data to Firebase:", error);
         }
     };
-    
 
-  // handle the option click 
+    // handle the option click 
     const handleOptionClick = (option, index) => {
         const updatedAnswers = [...answers];
         updatedAnswers[page * 3 + index] = option;
         setAnswers(updatedAnswers);
     };
- // handle the input change
+
+    // handle the input change
     const handleInputChange = (e, index) => {
         const updatedAnswers = [...answers];
         updatedAnswers[page * 3 + index] = e.target.value;
@@ -39,7 +41,6 @@ function LoveSurvey() {
     };
 
     // render the questions
-
     const renderQuestions = () => {
         const startIndex = page * 3;
         const endIndex = Math.min(startIndex + 3, data.questions.length);
@@ -49,8 +50,7 @@ function LoveSurvey() {
                 <h2>{question.text}</h2>
                 {question.options ? (
                     question.options.map((option) => (
-                    // Render options as buttons
-
+                        // Render options as buttons
                         <button
                             key={option}
                             onClick={() => handleOptionClick(option, index)}
@@ -60,8 +60,8 @@ function LoveSurvey() {
                         </button>
                     ))
                 ) : (
-              // Render a text input for questions without predefined options
-              <input
+                    // Render a text input for questions without predefined options
+                    <input
                         type="text"
                         value={answers[page * 3 + index] || ""}
                         onChange={(e) => handleInputChange(e, index)}
@@ -87,7 +87,7 @@ function LoveSurvey() {
     };
 
     return (
-        <div id="LoveForm">
+        <div id="LoveForm" className={theme}>
             <NavBar />
             {submitted ? (
                 <div>

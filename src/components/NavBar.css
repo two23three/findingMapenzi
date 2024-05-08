@@ -80,3 +80,21 @@ ul li {
     border: none;
     height: 5px;
 }
+/* NavBar.css */
+:root {
+    --navbar-background-light: #ec6f6f;
+    --text-color-light: #141010;
+    --navbar-background-dark: #632121;
+    --text-color-dark: #ffffff;
+  }
+  
+  .navbar {
+    background-color: var(--navbar-background-light);
+    color: var(--text-color-light);
+  }
+  
+  .navbar.dark {
+    background-color: var(--navbar-background-dark);
+    color: var(--text-color-dark);
+  }
+  
