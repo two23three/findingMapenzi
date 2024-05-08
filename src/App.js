@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Profile from "./components/Profile";
 import FoodDisplay from "./components/FoodDisplay";
@@ -8,25 +8,27 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./ThemeContext"; // Import ThemeProvider from ThemeContext file
 
 function App() {
+  const [ratings, setRatings] = useState({}); // Initialize state for ratings
+
   return (
-    <ThemeProvider> 
+    <ThemeProvider>
       <Router>
         <div className="App">
           <Routes>
             <Route path="/" element={<Profile />} />
             <Route
               path="/food-display"
-              element={<FoodDisplay />}
+              element={<FoodDisplay setRatings={setRatings} />}
             />
             <Route path="/lovesurvey" element={<LoveSurvey />} />
             <Route
               path="/rated-foods"
-              element={<RatedFoods />}
+              element={<RatedFoods ratings={ratings} />}
             />
           </Routes>
         </div>
       </Router>
-    </ThemeProvider> 
+    </ThemeProvider>
   );
 }
 
