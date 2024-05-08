@@ -36,7 +36,7 @@ function Profile() {
     });
   };
 
-  // Handle login submission
+ // Handle login submission
 const handleLogin = (e) => {
     e.preventDefault();
   
@@ -57,7 +57,7 @@ const handleLogin = (e) => {
     } else {
       alert('Invalid username or password.');
     }
-  };
+  }; 
   
 
   // Handle form input changes for sign-up

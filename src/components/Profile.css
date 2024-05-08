@@ -337,10 +337,9 @@
     color: #666;
   }
   
-  /* Styling for the app name */
   .app-name {
     font-weight: bold;
-    color: #285688; /* Blue color */
+    color: #285688; 
   }
   :root {
     --light-mode-color: rgb(248, 217, 222);
@@ -364,6 +363,7 @@
     background-color: #333333;
     color: #ffffff;
   }
+  
   
   
   
