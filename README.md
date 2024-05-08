@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# FindingMapenzi
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React Group Project aimed at revolutionizing the dating experience.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+In this current generation, dating has become a strenuous task. FindingMapenzi is an innovative app that simplifies the process by allowing users to send and fill out compatibility forms. Upon filling out the form, the app gauges compatibility and recommends a meal for the two individuals to try out and cook together.
 
-### `npm start`
+### [Live link](./README.md)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Core Functions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **User authentication system:** Allowing users to sign up and log in.
+2. **Compatibility form:** Allowing users to fill a dating form with questions about compatibility, interests, and preferences.
+   - *Includes a feature to reject users below 18 years old.*
+3. **User profile:** Providing a user profile where users can see their details.
+4. **Recipe discovery:** Allowing users to see a list of displayed recipes and search for recipes.
+5. **Meal rating system:** Allowing users to rate each meal on a scale of 1 to 5 stars.
 
-### `npm test`
+### API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The app utilizes the [Spoonacular API](https://api.spoonacular.com/)
 
-### `npm run build`
+## How to Run
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Requirements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Node.js
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- npm
 
-### `npm run eject`
+### Installation Process
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone this repository using
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    ```bash
+      git clone git@github.com:two23three/findingMapenzi.git
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    or by downloading a ZIP file of the code.
+  
+2. The repository, if downloaded as a .zip file will need to be extracted to your preferred location.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Navigate to the project folder on your bash terminal.
 
-## Learn More
+4. Install dependancies using
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+      npm install
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Run the application using
 
-### Code Splitting
+    ```bash
+        npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technolgies used
 
-### Analyzing the Bundle Size
+- **React**
+- **JavaScript**
+- **HTML**
+- **CSS**
+- **Git**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contact
 
-### Making a Progressive Web App
+For any questions or concerns please free to reach out to any of the contributors below:  
+[tulleycodes](https://github.com/two23three)  
+[KiplagaTeddy](https://github.com/KiplagaTeddy)  
+[Migero](https://github.com/migeroreloaded)  
+[Kamau-sam](https://github.com/Kamau-sam)  
+[briimiin](https://github.com/briimiin)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The content of this site is licensed under the [MIT license](./LICENSE.md)
