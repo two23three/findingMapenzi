@@ -21,12 +21,13 @@ function NavBar({ onSearch }) {
       <img src="" alt="" className="logo" />
       <p className="note">Find Love with food</p>
       <ul>
+       <li>
+          <Link to="/">Profile</Link>
+        </li>
         <li>
           <Link to="/LoveSurvey">LoveForm</Link>
         </li>
-        <li>
-          <Link to="/">Profile</Link>
-        </li>
+       
         <li>
           <Link to="/food-display">FoodForDate</Link>
         </li>
