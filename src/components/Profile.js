@@ -240,12 +240,7 @@ const handleLogin = (e) => {
       )}
     
     </div>
-<<<<<<< HEAD
-     <div>
-     
-     </div>
-=======
->>>>>>> refs/remotes/origin/main
+
      </div>
 
   );
