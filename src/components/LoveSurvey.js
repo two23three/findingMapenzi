@@ -86,16 +86,16 @@ function LoveSurvey() {
         }
     };
 
-    return (
+    return (<>
+        <NavBar />
         <div id="LoveForm" className={theme}>
-            <NavBar />
             {submitted ? (
                 <div>
                     <h2>Thank you for completing the survey! 😊</h2>
                     <pre className="answers">{JSON.stringify(answers, null, 2)}</pre>
                     <Link to="/food-display">
-                        <button>See Suggested Foods</button>  
-                    </Link>              
+                        <button>See Suggested Foods</button>
+                    </Link>
                 </div>
             ) : (
                 <div>
@@ -106,7 +106,7 @@ function LoveSurvey() {
                     </div>
                 </div>
             )}
-        </div>
+        </div></>
     );
 }
 
