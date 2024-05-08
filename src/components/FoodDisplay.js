@@ -4,24 +4,24 @@ import StarRating from "./StarRating";
 import NavBar from "./NavBar";
 
 function FoodDisplay() {
-   // State variables
-  const [recipes, setRecipes] = useState(null); // Changed initial state to null
-  const [ratings, setRatings] = useState({}); // State to store individual recipe ratings
+  const [recipes, setRecipes] = useState(null);
+  const [ratings, setRatings] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
 
-  const API_KEY = ""; // 3c78c7ebf8cf4dbf88d442a2a8591e8a
+  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a";
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
-      // Fetch recipes based on search query
-      fetchRecipes(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${API_KEY}&number=5`);
+      fetchRecipes(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${API_KEY}&number=5`
+      );
     } else {
-      // Fetch 5 random recipes to display
-      fetchRecipes(`https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`);
+      fetchRecipes(
+        `https://api.spoonacular.com/recipes/random?number=5&apiKey=${API_KEY}`
+      );
     }
   }, [searchQuery]);
 
-  // Function to fetch recipes from the API
   const fetchRecipes = (url) => {
     fetch(url)
       .then((response) => {
@@ -38,39 +38,41 @@ function FoodDisplay() {
       });
   };
 
-  // Function to handle rating updates
   const handleRatingUpdate = (recipeId, rating) => {
     setRatings((prevRatings) => ({
       ...prevRatings,
       [recipeId]: rating,
     }));
-  }; 
-  
-  // Function to handle search query changes
+  };
+
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
-  // Function to handle a recipe deletion
   const handleDeleteRecipe = (index) => {
     const updatedRecipes = [...recipes];
     updatedRecipes.splice(index, 1);
     setRecipes(updatedRecipes);
-  }; 
+  };
 
   return (
     <div className="food-container">
       <NavBar onSearch={handleSearch} />
       <h1 className="food-heading">Random Foods with recipes</h1>
-      {/* Render recipes or loading message based on recipes state */}
       {recipes !== null ? (
         <div className="recipe-grid">
           {recipes.map((recipe, index) => (
             <div key={index} className="recipe-card">
               <h2 className="recipe-title">{recipe.title}</h2>
-              <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="recipe-image"
+              />
               {recipe.readyInMinutes && (
-                <p className="recipe-info">Ready in {recipe.readyInMinutes} minutes</p>
+                <p className="recipe-info">
+                  Ready in {recipe.readyInMinutes} minutes
+                </p>
               )}
               {recipe.servings && (
                 <p className="recipe-info">Servings: {recipe.servings}</p>
@@ -82,8 +84,12 @@ function FoodDisplay() {
                   ))}
                 </ul>
               )}
-              <a href={recipe.sourceUrl} className="recipe-link">View Recipe</a>
-              <StarRating onRating={(rating) => handleRatingUpdate(recipe.id, rating)} />
+              <a href={recipe.sourceUrl} className="recipe-link">
+                View Recipe
+              </a>
+              <StarRating
+                onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
+              />
               <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
               <button onClick={() => handleDeleteRecipe(index)}>Delete</button>
             </div>
