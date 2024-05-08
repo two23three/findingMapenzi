@@ -14,7 +14,7 @@ function App() {
      <NavBar />
       <Routes>
         <Route path="/" element={<Profile />} />
-        <Route path="/food-display" component={FoodDisplay} />
+        <Route path="/food-display" element={<FoodDisplay />} />
         <Route path="/lovesurvey" element={<LoveSurvey />} />
         <Route path="/star-rating" element={<StarRating />} />
       </Routes>
