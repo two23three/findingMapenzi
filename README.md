@@ -6,7 +6,7 @@ This is a React Group Project aimed at revolutionizing the dating experience.
 
 In this current generation, dating has become a strenuous task. FindingMapenzi is an innovative app that simplifies the process by allowing users to send and fill out compatibility forms. Upon filling out the form, the app gauges compatibility and recommends a meal for the two individuals to try out and cook together.
 
-### [Live link](./README.md)
+### [Live link](https://finding-mapenzi.netlify.app/)
 
 ### Core Functions
 
