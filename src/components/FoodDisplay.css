@@ -81,4 +81,13 @@
   .recipe-delete-button:hover {
     background-color: #555; /* Darker gray on hover */
   }
+  .food-container.light {
+    background-color: #ffffff;
+    color: #000000;
+  }
   
+  /* Dark mode styles */
+  .food-container.dark {
+    background-color: #333333;
+    color: #ffffff;
+  }

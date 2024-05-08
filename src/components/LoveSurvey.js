@@ -8,6 +8,7 @@ import { setDoc,collection, doc } from "firebase/firestore";
 import NavBar from "./NavBar";
 
 function LoveSurvey() {
+   
     // states for the values we use in the survey
     const [page, setPage] = useState(0);
     const [answers, setAnswers] = useState([]);
@@ -46,7 +47,7 @@ function LoveSurvey() {
         const endIndex = Math.min(startIndex + 3, data.questions.length);
 
         return data.questions.slice(startIndex, endIndex).map((question, index) => (
-            <div key={question.id}>
+            <div key={question.id} className={theme}>
                 <h2>{question.text}</h2>
                 {question.options ? (
                     question.options.map((option) => (

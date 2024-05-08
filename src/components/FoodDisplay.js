@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./FoodDisplay.css";
 import StarRating from "./StarRating";
 import NavBar from "./NavBar";
+import { useTheme } from "../ThemeContext"; 
 
 // State variables
 function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-
+  const { theme } = useTheme();
   const API_KEY = '';//3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
@@ -65,7 +66,7 @@ function FoodDisplay({ setRatings }) {
   };
 
   return (
-    <div className="food-container">
+    <div className={`food-container ${theme}`}>
       <NavBar onSearch={handleSearch} />
       <h1 className="food-heading">Random Foods with recipes</h1>
       {/* Render recipes or loading message based on recipes state */}
