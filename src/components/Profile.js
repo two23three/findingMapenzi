@@ -219,11 +219,6 @@ const handleLogin = (e) => {
               Welcome to FindingMapenzi {profileData.username}! We're thrilled to have you. Please take a moment to fill out
               your preferences in the LoveSurvey below.This is only to help us enhance your experience here!
             </p>  
-    <div className="profile-details-content">
-    <div className="profile-detail">
-      <span className="detail-label">Name:</span>
-      <span className="detail-value">{profileData.username}</span>
-    </div>
     <div className="profile-detail">
       <span className="detail-label">Age:</span>
       <span className="detail-value">{profileData.age}</span>
@@ -241,15 +236,16 @@ const handleLogin = (e) => {
 </div>
 
 
-
-        </div>
         
       )}
     
     </div>
+<<<<<<< HEAD
      <div>
      
      </div>
+=======
+>>>>>>> refs/remotes/origin/main
      </div>
 
   );
