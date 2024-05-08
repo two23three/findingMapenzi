@@ -62,6 +62,7 @@ The app utilizes the [Spoonacular API](https://api.spoonacular.com/)
 - **HTML**
 - **CSS**
 - **Git**
+- **FireBase**
 
 ## Contact
 
