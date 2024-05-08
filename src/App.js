@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className="App" id="light">
         <Routes>
           <Route path="/" element={<Profile />} />
           <Route
