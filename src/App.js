@@ -1,22 +1,28 @@
+import React, { useState } from "react";
 import "./App.css";
 import Profile from "./components/Profile";
-import React from "react";
 import FoodDisplay from "./components/FoodDisplay";
-import StarRating from "./components/StarRating";
 import LoveSurvey from "./components/LoveSurvey";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RatedFoods from "./components/RatedFoods";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [ratings, setRatings] = useState({}); // Stores complete recipe data along with ratings
+
   return (
     <Router>
       <div className="App">
         <Routes>
           <Route path="/" element={<Profile />} />
-          <Route path="/food-display" element={<FoodDisplay />} />
+          <Route
+            path="/food-display"
+            element={<FoodDisplay setRatings={setRatings} />}
+          />
           <Route path="/lovesurvey" element={<LoveSurvey />} />
-          <Route path="/star-rating" element={<StarRating />} />
-          <Route path="/rated-foods" component={<RatedFoods />} />{" "}
+          <Route
+            path="/rated-foods"
+            element={<RatedFoods ratings={ratings} />}
+          />
         </Routes>
       </div>
     </Router>

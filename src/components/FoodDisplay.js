@@ -3,9 +3,8 @@ import "./FoodDisplay.css";
 import StarRating from "./StarRating";
 import NavBar from "./NavBar";
 
-function FoodDisplay() {
+function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
-  const [ratings, setRatings] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
 
   const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a";
@@ -24,25 +23,21 @@ function FoodDisplay() {
 
   const fetchRecipes = (url) => {
     fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         setRecipes(data.recipes || data.results);
       })
-      .catch((error) => {
-        console.error("Error fetching recipes:", error);
-      });
+      .catch((error) => console.error("Error fetching recipes:", error));
   };
 
   const handleRatingUpdate = (recipeId, rating) => {
-    setRatings((prevRatings) => ({
-      ...prevRatings,
-      [recipeId]: rating,
-    }));
+    const recipe = recipes.find((r) => r.id === recipeId);
+    if (recipe) {
+      setRatings((prevRatings) => ({
+        ...prevRatings,
+        [recipeId]: { ...recipe, rating },
+      }));
+    }
   };
 
   const handleSearch = (query) => {
@@ -90,7 +85,7 @@ function FoodDisplay() {
               <StarRating
                 onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
               />
-              <p>Rating: {ratings[recipe.id] || "No rating yet"}</p>
+              <p>Rating: {recipe.rating || "No rating yet"}</p>
               <button onClick={() => handleDeleteRecipe(index)}>Delete</button>
             </div>
           ))}
