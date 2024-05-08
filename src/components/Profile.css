@@ -113,6 +113,8 @@
     margin-bottom: 0;
   }
 
+  
+
   .login label {
     display: block;
     margin-bottom: 10px;
@@ -303,9 +305,6 @@
     grid-column: span 2;
   }
   
-  /* Profile.css */
-
-/* Styling for the welcome message */
 .welcome-message {
     font-size: 18px;
     color: #333;
@@ -313,7 +312,6 @@
     position: relative; /* Needed for absolute positioning */
   }
   
-  /* Animation for the welcome message */
   @keyframes slideIn {
     0% {
       opacity: 0;
@@ -357,32 +355,25 @@
     background-color: #ffffff;
     color: #000000;
   }
-  
-  /* Dark mode styles */
-  .profile-container.dark {
+    .profile-container.dark {
     background-color: #333333;
     color: #ffffff;
   }
-
-  /* Profile.css */
-
-/* Global variables */
 :root {
-  --purple: #8a2be2;
-  --dark-purple: #4b0082;
-  --light-gray: #ccc;
+  --purple: #ffffff;
+  --dark-purple: #3b033d;
+  --light-gray: #f1cece;
 }
 
-/* Profile container */
 .profile-container {
   width: 100%;
   max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
+  margin-top: 200px;
+  padding: 40px;
   border: 1px solid var(--light-gray);
   border-radius: 5px;
   background-color: var(--dark-purple); /* Dark background */
-  color: white; /* White text */
+  color: white;
 }
 
 /* Profile form */

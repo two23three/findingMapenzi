@@ -99,7 +99,7 @@
   background-color: var(--glow-spread-color);
   filter: blur(2em);
   opacity: .7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
+  transform: perspective(1.5em) rotateX(35deg) scale(1, .4);
  }
  
  .LoveForm button:hover {
@@ -114,6 +114,10 @@
   box-shadow: 0 0 0.6em .25em var(--glow-color),
          0 0 2.5em 2em var(--glow-spread-color),
          inset 0 0 .5em .25em var(--glow-color);
+ }
+
+ .LoveForm button.clicked {
+    background-color: #ff0000;
  }
 
 /* "Thank you" message styles */

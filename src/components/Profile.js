@@ -109,8 +109,6 @@ const handleLogin = (e) => {
     <div>
       { isLoggedIn &&<NavBar/>}
     <div className="profile-container">
-  
-     
       {!isLoggedIn ? (
         isSigningUp ? (
             <form className="profile-form" onSubmit={handleSignUp}>
@@ -121,7 +119,7 @@ const handleLogin = (e) => {
                 name="username"
                 value={profileData.username}
                 onChange={handleInputChange}
-                required // Ensure the field is required
+                required
               />
             </label>
             <label>Age
