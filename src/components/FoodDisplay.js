@@ -55,6 +55,7 @@ function FoodDisplay({ setRatings }) {
 
   // Function to handle search query changes
   const handleSearch = (query) => {
+    
     setSearchQuery(query);
   };
 
