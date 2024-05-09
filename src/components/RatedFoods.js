@@ -1,7 +1,7 @@
 import React from "react";
 import "./RatedFoods.css";
 import StarRating from "./StarRating";
-
+// This component is responsible for displaying foods that have been rated.
 function RatedFoods({ ratings }) {
   // Filter to include only rated items
   const ratedEntries = Object.entries(ratings).filter(
