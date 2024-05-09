@@ -64,6 +64,19 @@ nav{
    color: #333;
    cursor: pointer;
 }
+.toggle-button{
+    margin-left: 10px;
+}
+.navbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: pink;
+    color:purple;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
 
 /* NavBar.css */
 :root {

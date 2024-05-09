@@ -23,16 +23,16 @@ function NavBar({ onSearch }) {
       <p className="note">Find Love with food</p>
       <ul className="menu">
         <li>
-          <Link to="/">Profile</Link>
+          <Link className="navbutton" to="/">Profile</Link>
         </li>
         <li>
-          <Link to="/LoveSurvey">LoveForm</Link>
+          <Link className="navbutton" to="/LoveSurvey">LoveForm</Link>
         </li>
         <li>
-          <Link to="/food-display">FoodForDate</Link>
+          <Link className="navbutton" to="/food-display">FoodForDate</Link>
         </li>
         <li>
-          <Link to="/rated-foods">Rated Foods</Link>
+          <Link className="navbutton" to="/rated-foods">Rated Foods</Link>
         </li>{" "}
       </ul>
       <div className="search">
