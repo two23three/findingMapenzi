@@ -18,9 +18,10 @@ function NavBar({ onSearch }) {
 
   return (
     <div className={`navbar ${theme}`}>
+      <nav>
       <img src="" alt="" className="logo" />
       <p className="note">Find Love with food</p>
-      <ul>
+      <ul className="menu">
         <li>
           <Link to="/LoveSurvey">LoveForm</Link>
         </li>
@@ -34,18 +35,21 @@ function NavBar({ onSearch }) {
           <Link to="/rated-foods">Rated Foods</Link>
         </li>{" "}
       </ul>
-      <div className="searchbar">
+      <div className="search">
+        <form>
         <input
           type="text"
           placeholder="Search for food"
           value={searchQuery}
           onChange={handleInputChange}
         />
-      </div>
-      <button className="button" onClick={handleSearch} placeholder= "search"></button>
-      <button className="toggle-button" onClick={toggleTheme}>
+        <button type= "submit" className="button" onClick={handleSearch} placeholder= "search">GO</button>
+        <button className="toggle-button" onClick={toggleTheme}>
         {theme === "light" ? "🌙" : "☀️"}
-      </button>
+       </button>
+       </form>
+      </div>
+     </nav>
     </div>
   );
 }
