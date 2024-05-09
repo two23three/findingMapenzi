@@ -93,7 +93,6 @@ function LoveSurvey() {
             {submitted ? (
                 <div>
                     <h2>Thank you for completing the survey! 😊</h2>
-                    <pre className="answers">{JSON.stringify(answers, null, 2)}</pre>
                     <Link to="/food-display">
                         <button>See Suggested Foods</button>
                     </Link>
