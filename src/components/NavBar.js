@@ -53,14 +53,13 @@ function NavBar({ onSearch }) {
               onChange={handleInputChange}
             />
             <button
-              type="submit"
+              type="button"
               className="button"
               onClick={handleSearch}
-              placeholder="search"
             >
               GO
             </button>
-            <button className="toggle-button" onClick={toggleTheme}>
+            <button type="button" className="toggle-button" onClick={toggleTheme}>
               {theme === "light" ? "🌙" : "☀️"}
             </button>
           </form>
