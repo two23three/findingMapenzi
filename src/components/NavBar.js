@@ -19,37 +19,53 @@ function NavBar({ onSearch }) {
   return (
     <div className={`navbar ${theme}`}>
       <nav>
-      <img src="" alt="" className="logo" />
-      <p className="note">Find Love with food</p>
-      <ul className="menu">
-        <li>
-          <Link className="navbutton" to="/">Profile</Link>
-        </li>
-        <li>
-          <Link className="navbutton" to="/LoveSurvey">LoveForm</Link>
-        </li>
-        <li>
-          <Link className="navbutton" to="/food-display">FoodForDate</Link>
-        </li>
-        <li>
-          <Link className="navbutton" to="/rated-foods">Rated Foods</Link>
-        </li>{" "}
-      </ul>
-      <div className="search">
-        <form>
-        <input
-          type="text"
-          placeholder="Search for food"
-          value={searchQuery}
-          onChange={handleInputChange}
-        />
-        <button type= "submit" className="button" onClick={handleSearch} placeholder= "search">GO</button>
-        <button className="toggle-button" onClick={toggleTheme}>
-        {theme === "light" ? "🌙" : "☀️"}
-       </button>
-       </form>
-      </div>
-     </nav>
+        <img src="" alt="" className="logo" />
+        <span className="heart"></span>
+        <p className="note">Find Love with food</p>
+        <ul className="menu">
+          <li>
+            <Link className="navbutton" to="/">
+              Profile
+            </Link>
+          </li>
+          <li>
+            <Link className="navbutton" to="/LoveSurvey">
+              LoveForm
+            </Link>
+          </li>
+          <li>
+            <Link className="navbutton" to="/food-display">
+              FoodForDate
+            </Link>
+          </li>
+          <li>
+            <Link className="navbutton" to="/rated-foods">
+              Rated Foods
+            </Link>
+          </li>{" "}
+        </ul>
+        <div className="search">
+          <form>
+            <input
+              type="text"
+              placeholder="Search for food"
+              value={searchQuery}
+              onChange={handleInputChange}
+            />
+            <button
+              type="submit"
+              className="button"
+              onClick={handleSearch}
+              placeholder="search"
+            >
+              GO
+            </button>
+            <button className="toggle-button" onClick={toggleTheme}>
+              {theme === "light" ? "🌙" : "☀️"}
+            </button>
+          </form>
+        </div>
+      </nav>
     </div>
   );
 }
