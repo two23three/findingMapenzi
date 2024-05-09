@@ -60,7 +60,9 @@ function NavBar({ onSearch }) {
             >
               GO
             </button>
-            <button className="toggle-button" onClick={toggleTheme}>
+            <button className="toggle-button" onClick={toggleTheme}
+            
+            >
               {theme === "light" ? "🌙" : "☀️"}
             </button>
           </form>

@@ -9,7 +9,7 @@ function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   // const { theme } = useTheme();
-  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a"; //3c78c7ebf8cf4dbf88d442a2a8591e8a
+  const API_KEY = "59031b767a6f4514b3ae156bbe60f826"; //3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
