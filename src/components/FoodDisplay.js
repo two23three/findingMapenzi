@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./FoodDisplay.css";
 import StarRating from "./StarRating";
 import NavBar from "./NavBar";
-import { useTheme } from "../ThemeContext"; 
+// import { useTheme } from "../ThemeContext";
 
 // State variables
 function FoodDisplay({ setRatings }) {
   const [recipes, setRecipes] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const { theme } = useTheme();
-  const API_KEY = '';//3c78c7ebf8cf4dbf88d442a2a8591e8a
+  // const { theme } = useTheme();
+  const API_KEY = "3c78c7ebf8cf4dbf88d442a2a8591e8a"; //3c78c7ebf8cf4dbf88d442a2a8591e8a
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
@@ -66,7 +66,7 @@ function FoodDisplay({ setRatings }) {
   };
 
   return (
-    <div className={`food-container ${theme}`}>
+    <div className={`food-container`}>
       <NavBar onSearch={handleSearch} />
       <h1 className="food-heading">Random Foods with recipes</h1>
       {/* Render recipes or loading message based on recipes state */}
@@ -101,9 +101,11 @@ function FoodDisplay({ setRatings }) {
               <StarRating
                 onRating={(rating) => handleRatingUpdate(recipe.id, rating)}
               />
-              <p className="recipe-rating">Rating: {recipe.rating || "No rating yet"}</p>
-              <button 
-                className="recipe-delete-button" 
+              <p className="recipe-rating">
+                Rating: {recipe.rating || "No rating yet"}
+              </p>
+              <button
+                className="recipe-delete-button"
                 onClick={() => handleDeleteRecipe(index)}
               >
                 Delete

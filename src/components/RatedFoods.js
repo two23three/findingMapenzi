@@ -1,18 +1,22 @@
-// RatedFoods.js
 import React from "react";
-import NavBar from "./NavBar";
-
+import "./RatedFoods.css";
+import StarRating from "./StarRating";
+// This component is responsible for displaying foods that have been rated.
 function RatedFoods({ ratings }) {
+  // Filter to include only rated items
+  const ratedEntries = Object.entries(ratings).filter(
+    ([_, recipeData]) => recipeData.rating > 0
+  );
+
   return (
-    
     <div className="rated-foods-container">
-      <NavBar />
       <h1 className="rated-foods-title">Rated Foods</h1>
       <div className="rated-foods-list">
-        {Object.entries(ratings).map(([recipeId, recipeData], index) => (
+        {ratedEntries.map(([recipeId, recipeData], index) => (
           <div key={index} className="rated-food-item">
             <h2>{recipeData.title}</h2>
             <img src={recipeData.image} alt={recipeData.title} />
+            <StarRating initialRating={recipeData.rating} />
             <p>Rating: {recipeData.rating}</p>
           </div>
         ))}
