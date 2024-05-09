@@ -1,6 +1,7 @@
 import React from "react";
 import "./RatedFoods.css";
 import StarRating from "./StarRating";
+import NavBar from "./NavBar";
 // This component is responsible for displaying foods that have been rated.
 function RatedFoods({ ratings }) {
   // Filter to include only rated items
@@ -10,6 +11,7 @@ function RatedFoods({ ratings }) {
 
   return (
     <div className="rated-foods-container">
+      <NavBar />
       <h1 className="rated-foods-title">Rated Foods</h1>
       <div className="rated-foods-list">
         {ratedEntries.map(([recipeId, recipeData], index) => (
