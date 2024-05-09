@@ -5,17 +5,22 @@
 }
 
 .star-button {
-  background-color: #ccc;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 5px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 36px;
+  color: #ccc;
 }
 
-.star-button.selected {
-  background-color: #ffd700;
+.star {
+  color: inherit;
 }
 
-.star-button:hover {
-  background-color: #fc7507;
+.star.selected {
+  color: #ffd700;
+}
+
+.star-button:hover .star {
+  color: #fc7507;
 }
