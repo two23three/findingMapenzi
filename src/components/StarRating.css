@@ -13,10 +13,6 @@
   color: #ccc;
 }
 
-.star {
-  color: inherit;
-}
-
 .star.selected {
   color: #ffd700;
 }

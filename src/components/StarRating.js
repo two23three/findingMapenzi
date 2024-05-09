@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./StarRating.css";
 
-function StarRating({ onRating }) {
+function StarRating({ initialRating, onRating }) {
   const [rating, setRating] = useState(0);
 
-  function handleClick(index) {
+  useEffect(() => {
+    setRating(initialRating); // Set the initial rating when the component mounts
+  }, [initialRating]);
+
+  const handleClick = (index) => {
     setRating(index);
-    onRating(index);
-  }
+    if (onRating) {
+      onRating(index);
+    }
+  };
 
   return (
     <div className="star-rating-container">
@@ -20,7 +26,9 @@ function StarRating({ onRating }) {
             className="star-button"
             onClick={() => handleClick(index)}
           >
-            <span className={index <= rating ? "star selected" : "star"}>&#9733;</span>
+            <span className={index <= rating ? "star selected" : "star"}>
+              &#9733;
+            </span>
           </button>
         );
       })}
