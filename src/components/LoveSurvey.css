@@ -17,24 +17,20 @@
     color: var(--text-color-dark);
   }
 
-/* LoveSurvey.css */
-
 /* Container styles */
 .LoveForm {
-  background: linear-gradient(to bottom, #000000, #4c0033);
+  background: linear-gradient(to bottom, #fa2cd8, #300120);
   color: #fff;
   font-family: 'Arial', sans-serif;
   padding: 10%;
   text-align: center;
 }
 
-/* Survey header styles */
 .LoveForm h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-/* Question styles */
 .LoveForm .question-container {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
