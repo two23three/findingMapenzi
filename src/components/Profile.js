@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import userData from '../user.json'; // Importing initial user data from JSON file
 import './Profile.css';
 import NavBar from './NavBar';
+import { firestore } from '../components/firebase';
+import { doc, collection, setDoc } from "firebase/firestore";
+
 import { Link } from 'react-router-dom';
 function Profile() {
   // State that has user profile info
-  const [profileData, setProfileData] = useState(userData);
+  const [profileData, setProfileData] = useState({});
 
   // State to track whether the user is signing up or logging in
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -18,6 +20,7 @@ function Profile() {
     username: '',
     password: '',
   });
+  
 
   // Fetch user profiles from local storage upon component mount
   useEffect(() => {
@@ -25,6 +28,7 @@ function Profile() {
     if (storedUserProfiles) {
       setProfileData(JSON.parse(storedUserProfiles));
     }
+
   }, []);
 
   // Handle form input changes for login
@@ -69,41 +73,41 @@ const handleLogin = (e) => {
     });
   };
 
-  const handleSignUp = (e) => {
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
-  
-    // Check if any field is empty
+
+
     for (const key in profileData) {
       if (profileData[key] === '') {
         alert('Please fill in all fields.');
         return;
       }
     }
-  
-    // Check if the age is below 18
+
     if (profileData.age < 18) {
       alert('You must be 18 years or older to sign up.');
       return;
     }
-  
-    // Retrieve existing user data from local storage
+
     const existingUserData = JSON.parse(localStorage.getItem('userProfiles')) || [];
-  
-    // Create a new user profile object
     const newUserProfile = { ...profileData };
-  
-    // Add the new user profile to the existing array
     const newUserProfiles = [...existingUserData, newUserProfile];
-  
-    // Save the updated array back to local storage
     localStorage.setItem('userProfiles', JSON.stringify(newUserProfiles));
-  
-    // Optionally, you can also update the state to reflect the logged-in status
+
     setIsSigningUp(false);
     setIsLoggedIn(true);
+    await saveDataToFirebase(newUserProfile);
   };
-  
-  
+
+  const saveDataToFirebase = async (userData) => {
+    try {
+        const docRef = await setDoc(doc(collection(firestore, "userProfiles"), userData.username), userData);
+        console.log("User profile data saved to Firebase successfully!", docRef.id);
+    } catch (error) {
+        console.error("Error saving user profile data to Firebase:", error);
+    }
+};
 
   return (
     <div>
