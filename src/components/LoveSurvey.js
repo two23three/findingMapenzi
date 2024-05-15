@@ -4,7 +4,7 @@ import "./LoveSurvey.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext"; // Import useTheme hook
 import { firestore } from "../components/firebase";
-import { setDoc,collection, doc } from "firebase/firestore";
+import { addDoc,collection, } from "firebase/firestore";
 import NavBar from "./NavBar";
 
 function LoveSurvey() {
@@ -14,19 +14,17 @@ function LoveSurvey() {
     const [answers, setAnswers] = useState([]);
     const [submitted, setSubmitted] = useState(false);
     const { theme } = useTheme(); // Access theme from the theme context
-
     const saveDataToFirebase = async () => {
         try {
-            const docRef =doc(collection(firestore, "surveyData"), "responses")
-            await setDoc(docRef, {
+            // Generate a unique identifier for each response
+            const responseRef = await addDoc(collection(firestore, "surveyData"), {
                 answers: answers
             });
-            console.log("Data saved to Firebase successfully!", answers);
+            console.log("Data saved to Firebase successfully!", responseRef.id);
         } catch (error) {
             console.error("Error saving data to Firebase:", error);
         }
     };
-
     // handle the option click 
     const handleOptionClick = (option, index) => {
         const updatedAnswers = [...answers];
