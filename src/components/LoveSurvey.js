@@ -4,7 +4,7 @@ import "./LoveSurvey.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "../ThemeContext"; // Import useTheme hook
 import { firestore } from "../components/firebase";
-import { addDoc,collection, } from "firebase/firestore";
+import { addDoc,collection, serverTimestamp } from "firebase/firestore";
 import NavBar from "./NavBar";
 
 function LoveSurvey() {
@@ -16,9 +16,13 @@ function LoveSurvey() {
     const { theme } = useTheme(); // Access theme from the theme context
     const saveDataToFirebase = async () => {
         try {
+            // Add timestamp to user data
+            const timestamp = serverTimestamp();
+
             // Generate a unique identifier for each response
             const responseRef = await addDoc(collection(firestore, "surveyData"), {
-                answers: answers
+                answers: answers,
+                timestamp: timestamp
             });
             console.log("Data saved to Firebase successfully!", responseRef.id);
         } catch (error) {
