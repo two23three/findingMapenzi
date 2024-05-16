@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import NavBar from './NavBar';
 import { firestore } from '../components/firebase';
-import { doc, collection, setDoc } from "firebase/firestore";
+import { doc, collection, setDoc ,serverTimestamp} from "firebase/firestore";
 
 import { Link } from 'react-router-dom';
 function Profile() {
@@ -20,7 +20,18 @@ function Profile() {
     username: '',
     password: '',
   });
-  
+  const saveDataToFirebase = async (userData) => {
+    try {
+      userData.timestamp = serverTimestamp(); // Add timestamp to user data
+      const docRef = await setDoc(
+        doc(collection(firestore, "userProfiles"), userData.username),
+        userData
+      );
+      console.log("User profile data saved to Firebase successfully!", docRef.id);
+    } catch (error) {
+      console.error("Error saving user profile data to Firebase:", error);
+    }
+  };
 
   // Fetch user profiles from local storage upon component mount
   useEffect(() => {
@@ -100,14 +111,7 @@ const handleLogin = (e) => {
     await saveDataToFirebase(newUserProfile);
   };
 
-  const saveDataToFirebase = async (userData) => {
-    try {
-        const docRef = await setDoc(doc(collection(firestore, "userProfiles"), userData.username), userData);
-        console.log("User profile data saved to Firebase successfully!", docRef.id);
-    } catch (error) {
-        console.error("Error saving user profile data to Firebase:", error);
-    }
-};
+  
 
   return (
     <div>
